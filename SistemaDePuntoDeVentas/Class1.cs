@@ -1,4 +1,4 @@
-﻿namespace SistemaDePuntoDeVentas
+﻿namespace CapaDatos
 {
    
 }
