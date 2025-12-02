@@ -28,18 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            xxxxxxxToolStripMenuItem = new ToolStripMenuItem();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xxxxxxxToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(211, 56);
+            // 
+            // xxxxxxxToolStripMenuItem
+            // 
+            xxxxxxxToolStripMenuItem.Name = "xxxxxxxToolStripMenuItem";
+            xxxxxxxToolStripMenuItem.Size = new Size(210, 24);
+            xxxxxxxToolStripMenuItem.Text = "xxxxxxx";
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Login";
             Text = "Login";
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem xxxxxxxToolStripMenuItem;
     }
 }
