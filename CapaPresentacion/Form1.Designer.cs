@@ -28,12 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            guna2ContextMenuStrip2 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            sssssToolStripMenuItem = new ToolStripMenuItem();
+            guna2ContextMenuStrip2.SuspendLayout();
+            SuspendLayout();
+            // 
+            // guna2ContextMenuStrip1
+            // 
+            guna2ContextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            guna2ContextMenuStrip1.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            guna2ContextMenuStrip1.RenderStyle.BorderColor = Color.Gainsboro;
+            guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = Color.White;
+            guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = Color.White;
+            guna2ContextMenuStrip1.RenderStyle.SeparatorColor = Color.Gainsboro;
+            guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            guna2ContextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // guna2ContextMenuStrip2
+            // 
+            guna2ContextMenuStrip2.ImageScalingSize = new Size(20, 20);
+            guna2ContextMenuStrip2.Items.AddRange(new ToolStripItem[] { sssssToolStripMenuItem });
+            guna2ContextMenuStrip2.Name = "guna2ContextMenuStrip2";
+            guna2ContextMenuStrip2.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            guna2ContextMenuStrip2.RenderStyle.BorderColor = Color.Gainsboro;
+            guna2ContextMenuStrip2.RenderStyle.ColorTable = null;
+            guna2ContextMenuStrip2.RenderStyle.RoundedEdges = true;
+            guna2ContextMenuStrip2.RenderStyle.SelectionArrowColor = Color.White;
+            guna2ContextMenuStrip2.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            guna2ContextMenuStrip2.RenderStyle.SelectionForeColor = Color.White;
+            guna2ContextMenuStrip2.RenderStyle.SeparatorColor = Color.Gainsboro;
+            guna2ContextMenuStrip2.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            guna2ContextMenuStrip2.Size = new Size(109, 28);
+            // 
+            // sssssToolStripMenuItem
+            // 
+            sssssToolStripMenuItem.Name = "sssssToolStripMenuItem";
+            sssssToolStripMenuItem.Size = new Size(108, 24);
+            sssssToolStripMenuItem.Text = "sssss";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "Form1";
+            Text = "Form1";
+            guna2ContextMenuStrip2.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip2;
+        private ToolStripMenuItem sssssToolStripMenuItem;
     }
 }
