@@ -33,8 +33,10 @@
             // Login
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(530, 330);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ResumeLayout(false);
         }
