@@ -31,7 +31,9 @@
             components = new System.ComponentModel.Container();
             contextMenuStrip1 = new ContextMenuStrip(components);
             xxxxxxxToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox1 = new PictureBox();
             contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // contextMenuStrip1
@@ -39,7 +41,7 @@
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { xxxxxxxToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(211, 56);
+            contextMenuStrip1.Size = new Size(128, 28);
             // 
             // xxxxxxxToolStripMenuItem
             // 
@@ -47,15 +49,26 @@
             xxxxxxxToolStripMenuItem.Size = new Size(210, 24);
             xxxxxxxToolStripMenuItem.Text = "xxxxxxx";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Screenshot_2025_12_01_152414;
+            pictureBox1.Location = new Point(402, 86);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(125, 62);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(pictureBox1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Login";
             Text = "Login";
             contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -63,5 +76,6 @@
 
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem xxxxxxxToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
