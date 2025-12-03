@@ -32,11 +32,14 @@
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            lblProductoStockMinimo = new MaterialSkin.Controls.MaterialLabel();
+            dataGridView2 = new DataGridView();
             btnLimpiar = new MaterialSkin.Controls.MaterialButton();
             btnEliminar = new MaterialSkin.Controls.MaterialButton();
             btnEditar = new MaterialSkin.Controls.MaterialButton();
             dataGridView1 = new DataGridView();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            cmbCategoria = new MaterialSkin.Controls.MaterialComboBox();
             lblStockMinimo = new MaterialSkin.Controls.MaterialLabel();
             lblStock = new MaterialSkin.Controls.MaterialLabel();
             lblCosto = new MaterialSkin.Controls.MaterialLabel();
@@ -48,7 +51,6 @@
             txtStock = new MaterialSkin.Controls.MaterialMaskedTextBox();
             txtCosto = new MaterialSkin.Controls.MaterialMaskedTextBox();
             txtPrecio = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            txtCategoria = new MaterialSkin.Controls.MaterialMaskedTextBox();
             txtNombre = new MaterialSkin.Controls.MaterialMaskedTextBox();
             txtCodigo = new MaterialSkin.Controls.MaterialMaskedTextBox();
             txtBuscarProducto = new MaterialSkin.Controls.MaterialMaskedTextBox();
@@ -59,6 +61,7 @@
             tabPage5 = new TabPage();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             materialCard1.SuspendLayout();
             SuspendLayout();
@@ -77,7 +80,7 @@
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(944, 533);
+            materialTabControl1.Size = new Size(994, 533);
             materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -85,13 +88,15 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(936, 505);
+            tabPage1.Size = new Size(986, 505);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Home";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(lblProductoStockMinimo);
+            tabPage2.Controls.Add(dataGridView2);
             tabPage2.Controls.Add(btnLimpiar);
             tabPage2.Controls.Add(btnEliminar);
             tabPage2.Controls.Add(btnEditar);
@@ -101,10 +106,31 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(936, 505);
+            tabPage2.Size = new Size(986, 505);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Inventario";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblProductoStockMinimo
+            // 
+            lblProductoStockMinimo.AutoSize = true;
+            lblProductoStockMinimo.Depth = 0;
+            lblProductoStockMinimo.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblProductoStockMinimo.ForeColor = Color.Black;
+            lblProductoStockMinimo.Location = new Point(595, 389);
+            lblProductoStockMinimo.MouseState = MaterialSkin.MouseState.HOVER;
+            lblProductoStockMinimo.Name = "lblProductoStockMinimo";
+            lblProductoStockMinimo.Size = new Size(185, 19);
+            lblProductoStockMinimo.TabIndex = 19;
+            lblProductoStockMinimo.Text = "Productos Con Stock Bajo";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(420, 412);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(536, 87);
+            dataGridView2.TabIndex = 15;
             // 
             // btnLimpiar
             // 
@@ -113,7 +139,7 @@
             btnLimpiar.Depth = 0;
             btnLimpiar.HighEmphasis = true;
             btnLimpiar.Icon = null;
-            btnLimpiar.Location = new Point(820, 440);
+            btnLimpiar.Location = new Point(877, 306);
             btnLimpiar.Margin = new Padding(4, 6, 4, 6);
             btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
             btnLimpiar.Name = "btnLimpiar";
@@ -132,7 +158,7 @@
             btnEliminar.Depth = 0;
             btnEliminar.HighEmphasis = true;
             btnEliminar.Icon = null;
-            btnEliminar.Location = new Point(683, 440);
+            btnEliminar.Location = new Point(714, 306);
             btnEliminar.Margin = new Padding(4, 6, 4, 6);
             btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             btnEliminar.Name = "btnEliminar";
@@ -151,7 +177,7 @@
             btnEditar.Depth = 0;
             btnEditar.HighEmphasis = true;
             btnEditar.Icon = null;
-            btnEditar.Location = new Point(555, 440);
+            btnEditar.Location = new Point(571, 306);
             btnEditar.Margin = new Padding(4, 6, 4, 6);
             btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
             btnEditar.Name = "btnEditar";
@@ -168,12 +194,13 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(420, 30);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(480, 380);
+            dataGridView1.Size = new Size(536, 252);
             dataGridView1.TabIndex = 1;
             // 
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(cmbCategoria);
             materialCard1.Controls.Add(lblStockMinimo);
             materialCard1.Controls.Add(lblStock);
             materialCard1.Controls.Add(lblCosto);
@@ -185,7 +212,6 @@
             materialCard1.Controls.Add(txtStock);
             materialCard1.Controls.Add(txtCosto);
             materialCard1.Controls.Add(txtPrecio);
-            materialCard1.Controls.Add(txtCategoria);
             materialCard1.Controls.Add(txtNombre);
             materialCard1.Controls.Add(txtCodigo);
             materialCard1.Controls.Add(txtBuscarProducto);
@@ -199,6 +225,28 @@
             materialCard1.Padding = new Padding(14);
             materialCard1.Size = new Size(380, 540);
             materialCard1.TabIndex = 0;
+            // 
+            // cmbCategoria
+            // 
+            cmbCategoria.AutoResize = false;
+            cmbCategoria.BackColor = Color.FromArgb(255, 255, 255);
+            cmbCategoria.Depth = 0;
+            cmbCategoria.DrawMode = DrawMode.OwnerDrawVariable;
+            cmbCategoria.DropDownHeight = 174;
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategoria.DropDownWidth = 121;
+            cmbCategoria.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cmbCategoria.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cmbCategoria.FormattingEnabled = true;
+            cmbCategoria.IntegralHeight = false;
+            cmbCategoria.ItemHeight = 43;
+            cmbCategoria.Location = new Point(135, 197);
+            cmbCategoria.MaxDropDownItems = 4;
+            cmbCategoria.MouseState = MaterialSkin.MouseState.OUT;
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.Size = new Size(228, 49);
+            cmbCategoria.StartIndex = 0;
+            cmbCategoria.TabIndex = 18;
             // 
             // lblStockMinimo
             // 
@@ -448,47 +496,6 @@
             txtPrecio.UseSystemPasswordChar = false;
             txtPrecio.ValidatingType = null;
             // 
-            // txtCategoria
-            // 
-            txtCategoria.AllowPromptAsInput = true;
-            txtCategoria.AnimateReadOnly = false;
-            txtCategoria.AsciiOnly = false;
-            txtCategoria.BackgroundImageLayout = ImageLayout.None;
-            txtCategoria.BeepOnError = false;
-            txtCategoria.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            txtCategoria.Depth = 0;
-            txtCategoria.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtCategoria.HidePromptOnLeave = false;
-            txtCategoria.HideSelection = true;
-            txtCategoria.InsertKeyMode = InsertKeyMode.Default;
-            txtCategoria.LeadingIcon = null;
-            txtCategoria.Location = new Point(135, 198);
-            txtCategoria.Mask = "";
-            txtCategoria.MaxLength = 32767;
-            txtCategoria.MouseState = MaterialSkin.MouseState.OUT;
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.PasswordChar = '\0';
-            txtCategoria.PrefixSuffixText = null;
-            txtCategoria.PromptChar = '_';
-            txtCategoria.ReadOnly = false;
-            txtCategoria.RejectInputOnFirstFailure = false;
-            txtCategoria.ResetOnPrompt = true;
-            txtCategoria.ResetOnSpace = true;
-            txtCategoria.RightToLeft = RightToLeft.No;
-            txtCategoria.SelectedText = "";
-            txtCategoria.SelectionLength = 0;
-            txtCategoria.SelectionStart = 0;
-            txtCategoria.ShortcutsEnabled = true;
-            txtCategoria.Size = new Size(228, 48);
-            txtCategoria.SkipLiterals = true;
-            txtCategoria.TabIndex = 6;
-            txtCategoria.TabStop = false;
-            txtCategoria.TextAlign = HorizontalAlignment.Left;
-            txtCategoria.TextMaskFormat = MaskFormat.IncludeLiterals;
-            txtCategoria.TrailingIcon = null;
-            txtCategoria.UseSystemPasswordChar = false;
-            txtCategoria.ValidatingType = null;
-            // 
             // txtNombre
             // 
             txtNombre.AllowPromptAsInput = true;
@@ -641,7 +648,7 @@
             btnAgregar.Depth = 0;
             btnAgregar.HighEmphasis = true;
             btnAgregar.Icon = null;
-            btnAgregar.Location = new Point(420, 440);
+            btnAgregar.Location = new Point(420, 306);
             btnAgregar.Margin = new Padding(4, 6, 4, 6);
             btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             btnAgregar.Name = "btnAgregar";
@@ -658,7 +665,7 @@
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(936, 505);
+            tabPage3.Size = new Size(986, 505);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Carrito";
             tabPage3.UseVisualStyleBackColor = true;
@@ -668,7 +675,7 @@
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(936, 505);
+            tabPage4.Size = new Size(986, 505);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Reporte de Ventas";
             tabPage4.UseVisualStyleBackColor = true;
@@ -678,7 +685,7 @@
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(936, 505);
+            tabPage5.Size = new Size(986, 505);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Historial";
             tabPage5.UseVisualStyleBackColor = true;
@@ -686,7 +693,7 @@
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(950, 600);
+            ClientSize = new Size(1000, 600);
             Controls.Add(materialTabControl1);
             DrawerTabControl = materialTabControl1;
             Name = "FormMenuPrincipal";
@@ -694,6 +701,7 @@
             materialTabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
@@ -715,7 +723,6 @@
         private MaterialSkin.Controls.MaterialMaskedTextBox txtStock;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtCosto;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtPrecio;
-        private MaterialSkin.Controls.MaterialMaskedTextBox txtCategoria;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtNombre;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtCodigo;
         private MaterialSkin.Controls.MaterialButton btnLimpiar;
@@ -730,5 +737,8 @@
         private MaterialSkin.Controls.MaterialLabel lblCategoria;
         private MaterialSkin.Controls.MaterialLabel lblNombre;
         private MaterialSkin.Controls.MaterialLabel lblCodigo;
+        private MaterialSkin.Controls.MaterialComboBox cmbCategoria;
+        private DataGridView dataGridView2;
+        private MaterialSkin.Controls.MaterialLabel lblProductoStockMinimo;
     }
 }
