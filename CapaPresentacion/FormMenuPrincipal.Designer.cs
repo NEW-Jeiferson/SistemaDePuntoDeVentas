@@ -116,7 +116,7 @@
             lblProductoStockMinimo.AutoSize = true;
             lblProductoStockMinimo.Depth = 0;
             lblProductoStockMinimo.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblProductoStockMinimo.ForeColor = Color.Black;
+            lblProductoStockMinimo.ForeColor = Color.FromArgb(211, 47, 47);
             lblProductoStockMinimo.Location = new Point(595, 389);
             lblProductoStockMinimo.MouseState = MaterialSkin.MouseState.HOVER;
             lblProductoStockMinimo.Name = "lblProductoStockMinimo";
