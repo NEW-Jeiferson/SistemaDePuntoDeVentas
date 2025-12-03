@@ -57,13 +57,34 @@
             btnBuscar = new MaterialSkin.Controls.MaterialButton();
             btnAgregar = new MaterialSkin.Controls.MaterialButton();
             tabPage3 = new TabPage();
+            dataGridView3 = new DataGridView();
+            btnValidarVenta = new MaterialSkin.Controls.MaterialButton();
+            materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            btnQuitarProducto = new MaterialSkin.Controls.MaterialButton();
+            btnCancelarVenta = new MaterialSkin.Controls.MaterialButton();
+            lblCantidad = new MaterialSkin.Controls.MaterialLabel();
+            nmrCantidadProducto = new NumericUpDown();
+            btnAgregarAlCarrito = new MaterialSkin.Controls.MaterialButton();
+            lblCarrito = new MaterialSkin.Controls.MaterialLabel();
+            lblProductosDisponibles = new MaterialSkin.Controls.MaterialLabel();
+            txtBuscarPorCodigo = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            dataGridView4 = new DataGridView();
+            btnCodigoProducto = new MaterialSkin.Controls.MaterialButton();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            lblSubTotal = new MaterialSkin.Controls.MaterialLabel();
+            lblImpuesto = new MaterialSkin.Controls.MaterialLabel();
+            lblTotal = new MaterialSkin.Controls.MaterialLabel();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             materialCard1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            materialCard2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nmrCantidadProducto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -662,6 +683,19 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(dataGridView3);
+            tabPage3.Controls.Add(btnValidarVenta);
+            tabPage3.Controls.Add(materialCard2);
+            tabPage3.Controls.Add(btnQuitarProducto);
+            tabPage3.Controls.Add(btnCancelarVenta);
+            tabPage3.Controls.Add(lblCantidad);
+            tabPage3.Controls.Add(nmrCantidadProducto);
+            tabPage3.Controls.Add(btnAgregarAlCarrito);
+            tabPage3.Controls.Add(lblCarrito);
+            tabPage3.Controls.Add(lblProductosDisponibles);
+            tabPage3.Controls.Add(txtBuscarPorCodigo);
+            tabPage3.Controls.Add(dataGridView4);
+            tabPage3.Controls.Add(btnCodigoProducto);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -669,6 +703,218 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Carrito";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(31, 45);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.Size = new Size(400, 230);
+            dataGridView3.TabIndex = 16;
+            // 
+            // btnValidarVenta
+            // 
+            btnValidarVenta.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnValidarVenta.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnValidarVenta.Depth = 0;
+            btnValidarVenta.HighEmphasis = true;
+            btnValidarVenta.Icon = null;
+            btnValidarVenta.Location = new Point(555, 460);
+            btnValidarVenta.Margin = new Padding(4, 6, 4, 6);
+            btnValidarVenta.MouseState = MaterialSkin.MouseState.HOVER;
+            btnValidarVenta.Name = "btnValidarVenta";
+            btnValidarVenta.NoAccentTextColor = Color.Empty;
+            btnValidarVenta.Size = new Size(146, 36);
+            btnValidarVenta.TabIndex = 15;
+            btnValidarVenta.Text = "Procesar Venta";
+            btnValidarVenta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnValidarVenta.UseAccentColor = false;
+            btnValidarVenta.UseVisualStyleBackColor = true;
+            // 
+            // materialCard2
+            // 
+            materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(lblTotal);
+            materialCard2.Controls.Add(lblImpuesto);
+            materialCard2.Controls.Add(lblSubTotal);
+            materialCard2.Depth = 0;
+            materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard2.Location = new Point(636, 340);
+            materialCard2.Margin = new Padding(14);
+            materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard2.Name = "materialCard2";
+            materialCard2.Padding = new Padding(14);
+            materialCard2.Size = new Size(250, 112);
+            materialCard2.TabIndex = 14;
+            // 
+            // btnQuitarProducto
+            // 
+            btnQuitarProducto.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnQuitarProducto.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnQuitarProducto.Depth = 0;
+            btnQuitarProducto.HighEmphasis = true;
+            btnQuitarProducto.Icon = null;
+            btnQuitarProducto.Location = new Point(685, 291);
+            btnQuitarProducto.Margin = new Padding(4, 6, 4, 6);
+            btnQuitarProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            btnQuitarProducto.Name = "btnQuitarProducto";
+            btnQuitarProducto.NoAccentTextColor = Color.Empty;
+            btnQuitarProducto.Size = new Size(167, 36);
+            btnQuitarProducto.TabIndex = 13;
+            btnQuitarProducto.Text = "Quitar del Carrito";
+            btnQuitarProducto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnQuitarProducto.UseAccentColor = false;
+            btnQuitarProducto.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelarVenta
+            // 
+            btnCancelarVenta.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCancelarVenta.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCancelarVenta.Depth = 0;
+            btnCancelarVenta.HighEmphasis = true;
+            btnCancelarVenta.Icon = null;
+            btnCancelarVenta.Location = new Point(807, 460);
+            btnCancelarVenta.Margin = new Padding(4, 6, 4, 6);
+            btnCancelarVenta.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCancelarVenta.Name = "btnCancelarVenta";
+            btnCancelarVenta.NoAccentTextColor = Color.Empty;
+            btnCancelarVenta.Size = new Size(147, 36);
+            btnCancelarVenta.TabIndex = 11;
+            btnCancelarVenta.Text = "Cancelar Venta";
+            btnCancelarVenta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCancelarVenta.UseAccentColor = false;
+            btnCancelarVenta.UseVisualStyleBackColor = true;
+            // 
+            // lblCantidad
+            // 
+            lblCantidad.AutoSize = true;
+            lblCantidad.Depth = 0;
+            lblCantidad.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblCantidad.Location = new Point(32, 390);
+            lblCantidad.MouseState = MaterialSkin.MouseState.HOVER;
+            lblCantidad.Name = "lblCantidad";
+            lblCantidad.Size = new Size(65, 19);
+            lblCantidad.TabIndex = 10;
+            lblCantidad.Text = "Cantidad";
+            // 
+            // nmrCantidadProducto
+            // 
+            nmrCantidadProducto.Location = new Point(121, 389);
+            nmrCantidadProducto.Name = "nmrCantidadProducto";
+            nmrCantidadProducto.Size = new Size(120, 23);
+            nmrCantidadProducto.TabIndex = 9;
+            // 
+            // btnAgregarAlCarrito
+            // 
+            btnAgregarAlCarrito.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAgregarAlCarrito.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAgregarAlCarrito.Depth = 0;
+            btnAgregarAlCarrito.HighEmphasis = true;
+            btnAgregarAlCarrito.Icon = null;
+            btnAgregarAlCarrito.Location = new Point(258, 380);
+            btnAgregarAlCarrito.Margin = new Padding(4, 6, 4, 6);
+            btnAgregarAlCarrito.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAgregarAlCarrito.Name = "btnAgregarAlCarrito";
+            btnAgregarAlCarrito.NoAccentTextColor = Color.Empty;
+            btnAgregarAlCarrito.Size = new Size(173, 36);
+            btnAgregarAlCarrito.TabIndex = 8;
+            btnAgregarAlCarrito.Text = "Agregar al Carrito";
+            btnAgregarAlCarrito.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAgregarAlCarrito.UseAccentColor = false;
+            btnAgregarAlCarrito.UseVisualStyleBackColor = true;
+            // 
+            // lblCarrito
+            // 
+            lblCarrito.AutoSize = true;
+            lblCarrito.Depth = 0;
+            lblCarrito.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblCarrito.Location = new Point(685, 14);
+            lblCarrito.MouseState = MaterialSkin.MouseState.HOVER;
+            lblCarrito.Name = "lblCarrito";
+            lblCarrito.Size = new Size(161, 19);
+            lblCarrito.TabIndex = 7;
+            lblCarrito.Text = "Productos en el Carrito";
+            // 
+            // lblProductosDisponibles
+            // 
+            lblProductosDisponibles.AutoSize = true;
+            lblProductosDisponibles.Depth = 0;
+            lblProductosDisponibles.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblProductosDisponibles.Location = new Point(141, 14);
+            lblProductosDisponibles.MouseState = MaterialSkin.MouseState.HOVER;
+            lblProductosDisponibles.Name = "lblProductosDisponibles";
+            lblProductosDisponibles.Size = new Size(160, 19);
+            lblProductosDisponibles.TabIndex = 6;
+            lblProductosDisponibles.Text = "Productos Disponibles";
+            // 
+            // txtBuscarPorCodigo
+            // 
+            txtBuscarPorCodigo.AllowPromptAsInput = true;
+            txtBuscarPorCodigo.AnimateReadOnly = false;
+            txtBuscarPorCodigo.AsciiOnly = false;
+            txtBuscarPorCodigo.BackgroundImageLayout = ImageLayout.None;
+            txtBuscarPorCodigo.BeepOnError = false;
+            txtBuscarPorCodigo.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtBuscarPorCodigo.Depth = 0;
+            txtBuscarPorCodigo.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtBuscarPorCodigo.HidePromptOnLeave = false;
+            txtBuscarPorCodigo.HideSelection = true;
+            txtBuscarPorCodigo.InsertKeyMode = InsertKeyMode.Default;
+            txtBuscarPorCodigo.LeadingIcon = null;
+            txtBuscarPorCodigo.Location = new Point(121, 291);
+            txtBuscarPorCodigo.Mask = "";
+            txtBuscarPorCodigo.MaxLength = 32767;
+            txtBuscarPorCodigo.MouseState = MaterialSkin.MouseState.OUT;
+            txtBuscarPorCodigo.Name = "txtBuscarPorCodigo";
+            txtBuscarPorCodigo.PasswordChar = '\0';
+            txtBuscarPorCodigo.PrefixSuffixText = null;
+            txtBuscarPorCodigo.PromptChar = '_';
+            txtBuscarPorCodigo.ReadOnly = false;
+            txtBuscarPorCodigo.RejectInputOnFirstFailure = false;
+            txtBuscarPorCodigo.ResetOnPrompt = true;
+            txtBuscarPorCodigo.ResetOnSpace = true;
+            txtBuscarPorCodigo.RightToLeft = RightToLeft.No;
+            txtBuscarPorCodigo.SelectedText = "";
+            txtBuscarPorCodigo.SelectionLength = 0;
+            txtBuscarPorCodigo.SelectionStart = 0;
+            txtBuscarPorCodigo.ShortcutsEnabled = true;
+            txtBuscarPorCodigo.Size = new Size(151, 48);
+            txtBuscarPorCodigo.SkipLiterals = true;
+            txtBuscarPorCodigo.TabIndex = 0;
+            txtBuscarPorCodigo.TabStop = false;
+            txtBuscarPorCodigo.Text = "Ingresa el Codigo";
+            txtBuscarPorCodigo.TextAlign = HorizontalAlignment.Left;
+            txtBuscarPorCodigo.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtBuscarPorCodigo.TrailingIcon = null;
+            txtBuscarPorCodigo.UseSystemPasswordChar = false;
+            txtBuscarPorCodigo.ValidatingType = null;
+            // 
+            // dataGridView4
+            // 
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView4.Location = new Point(554, 45);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.Size = new Size(400, 230);
+            dataGridView4.TabIndex = 5;
+            // 
+            // btnCodigoProducto
+            // 
+            btnCodigoProducto.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCodigoProducto.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCodigoProducto.Depth = 0;
+            btnCodigoProducto.HighEmphasis = true;
+            btnCodigoProducto.Icon = null;
+            btnCodigoProducto.Location = new Point(31, 303);
+            btnCodigoProducto.Margin = new Padding(4, 6, 4, 6);
+            btnCodigoProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCodigoProducto.Name = "btnCodigoProducto";
+            btnCodigoProducto.NoAccentTextColor = Color.Empty;
+            btnCodigoProducto.Size = new Size(77, 36);
+            btnCodigoProducto.TabIndex = 1;
+            btnCodigoProducto.Text = "Buscar";
+            btnCodigoProducto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCodigoProducto.UseAccentColor = false;
+            btnCodigoProducto.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -690,6 +936,42 @@
             tabPage5.Text = "Historial";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // lblSubTotal
+            // 
+            lblSubTotal.AutoSize = true;
+            lblSubTotal.Depth = 0;
+            lblSubTotal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblSubTotal.Location = new Point(11, 14);
+            lblSubTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblSubTotal.Name = "lblSubTotal";
+            lblSubTotal.Size = new Size(86, 19);
+            lblSubTotal.TabIndex = 17;
+            lblSubTotal.Text = "SubTotales:";
+            // 
+            // lblImpuesto
+            // 
+            lblImpuesto.AutoSize = true;
+            lblImpuesto.Depth = 0;
+            lblImpuesto.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblImpuesto.Location = new Point(26, 49);
+            lblImpuesto.MouseState = MaterialSkin.MouseState.HOVER;
+            lblImpuesto.Name = "lblImpuesto";
+            lblImpuesto.Size = new Size(43, 19);
+            lblImpuesto.TabIndex = 18;
+            lblImpuesto.Text = "ITBIS:";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Depth = 0;
+            lblTotal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblTotal.Location = new Point(26, 79);
+            lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(42, 19);
+            lblTotal.TabIndex = 19;
+            lblTotal.Text = "Total:";
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -705,6 +987,13 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            materialCard2.ResumeLayout(false);
+            materialCard2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nmrCantidadProducto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
         }
 
@@ -740,5 +1029,23 @@
         private MaterialSkin.Controls.MaterialComboBox cmbCategoria;
         private DataGridView dataGridView2;
         private MaterialSkin.Controls.MaterialLabel lblProductoStockMinimo;
+        private DataGridView dataGridView4;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtBuscarPorCodigo;
+        private MaterialSkin.Controls.MaterialButton btnCodigoProducto;
+        private MaterialSkin.Controls.MaterialButton btnAgregarAlCarrito;
+        private MaterialSkin.Controls.MaterialLabel lblCarrito;
+        private MaterialSkin.Controls.MaterialLabel lblProductosDisponibles;
+        private NumericUpDown nmrCantidadProducto;
+        private MaterialSkin.Controls.MaterialLabel lblCantidad;
+        private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialButton btnQuitarProducto;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
+        private MaterialSkin.Controls.MaterialButton btnCancelarVenta;
+        private MaterialSkin.Controls.MaterialCard materialCard2;
+        private MaterialSkin.Controls.MaterialButton btnValidarVenta;
+        private DataGridView dataGridView3;
+        private MaterialSkin.Controls.MaterialLabel lblTotal;
+        private MaterialSkin.Controls.MaterialLabel lblImpuesto;
+        private MaterialSkin.Controls.MaterialLabel lblSubTotal;
     }
 }
