@@ -10,4 +10,10 @@
     <ProjectReference Include="..\SistemaDePuntoDeVentas\CapaDatos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Inventario\" />
+    <Folder Include="Carrito\" />
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+
 </Project>
