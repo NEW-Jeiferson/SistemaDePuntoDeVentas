@@ -32,11 +32,10 @@
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            lblInventario = new MaterialSkin.Controls.MaterialLabel();
             lblProductoStockMinimo = new MaterialSkin.Controls.MaterialLabel();
             dataGridView2 = new DataGridView();
-            btnLimpiar = new MaterialSkin.Controls.MaterialButton();
             btnEliminar = new MaterialSkin.Controls.MaterialButton();
-            btnEditar = new MaterialSkin.Controls.MaterialButton();
             dataGridView1 = new DataGridView();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             cmbCategoria = new MaterialSkin.Controls.MaterialComboBox();
@@ -62,6 +61,9 @@
             dataGridView3 = new DataGridView();
             btnValidarVenta = new MaterialSkin.Controls.MaterialButton();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            lblMontoTotal = new MaterialSkin.Controls.MaterialLabel();
+            lblMontoITBIS = new MaterialSkin.Controls.MaterialLabel();
+            lblMontoSubtotal = new MaterialSkin.Controls.MaterialLabel();
             lblTotal = new MaterialSkin.Controls.MaterialLabel();
             lblImpuesto = new MaterialSkin.Controls.MaterialLabel();
             lblSubTotal = new MaterialSkin.Controls.MaterialLabel();
@@ -76,7 +78,27 @@
             dataGridView4 = new DataGridView();
             btnCodigoProducto = new MaterialSkin.Controls.MaterialButton();
             tabPage4 = new TabPage();
-            tabPage5 = new TabPage();
+            lblReporteVentasDia = new MaterialSkin.Controls.MaterialLabel();
+            btnRecarcularPlinq = new MaterialSkin.Controls.MaterialButton();
+            materialCard4 = new MaterialSkin.Controls.MaterialCard();
+            lblReportesdelDia = new MaterialSkin.Controls.MaterialLabel();
+            lblTotalGeneralFinal = new MaterialSkin.Controls.MaterialLabel();
+            lblITBISFinal = new MaterialSkin.Controls.MaterialLabel();
+            lblSubtotalGenealNumero = new MaterialSkin.Controls.MaterialLabel();
+            lblCantidadVentasFinal = new MaterialSkin.Controls.MaterialLabel();
+            lblTotalGeneral = new MaterialSkin.Controls.MaterialLabel();
+            lblNumeroVentas = new MaterialSkin.Controls.MaterialLabel();
+            lblSubTotalGeneral = new MaterialSkin.Controls.MaterialLabel();
+            lblITBISGeneral = new MaterialSkin.Controls.MaterialLabel();
+            materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            lblEstadoCargando = new MaterialSkin.Controls.MaterialLabel();
+            lblEstado = new MaterialSkin.Controls.MaterialLabel();
+            btnReporte = new MaterialSkin.Controls.MaterialButton();
+            lblProgreso = new MaterialSkin.Controls.MaterialLabel();
+            prbProgreso = new ProgressBar();
+            dtpFecha = new DateTimePicker();
+            lblFecha = new MaterialSkin.Controls.MaterialLabel();
+            dgvReporteVentas = new DataGridView();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -87,6 +109,10 @@
             materialCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nmrCantidadProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            tabPage4.SuspendLayout();
+            materialCard4.SuspendLayout();
+            materialCard3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvReporteVentas).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -95,7 +121,6 @@
             materialTabControl1.Controls.Add(tabPage2);
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
-            materialTabControl1.Controls.Add(tabPage5);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.Location = new Point(3, 64);
@@ -118,11 +143,10 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(lblInventario);
             tabPage2.Controls.Add(lblProductoStockMinimo);
             tabPage2.Controls.Add(dataGridView2);
-            tabPage2.Controls.Add(btnLimpiar);
             tabPage2.Controls.Add(btnEliminar);
-            tabPage2.Controls.Add(btnEditar);
             tabPage2.Controls.Add(dataGridView1);
             tabPage2.Controls.Add(materialCard1);
             tabPage2.Controls.Add(btnAgregar);
@@ -133,6 +157,18 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Inventario";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblInventario
+            // 
+            lblInventario.AutoSize = true;
+            lblInventario.Depth = 0;
+            lblInventario.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblInventario.Location = new Point(654, 11);
+            lblInventario.MouseState = MaterialSkin.MouseState.HOVER;
+            lblInventario.Name = "lblInventario";
+            lblInventario.Size = new Size(71, 19);
+            lblInventario.TabIndex = 20;
+            lblInventario.Text = "Inventario";
             // 
             // lblProductoStockMinimo
             // 
@@ -155,25 +191,6 @@
             dataGridView2.Size = new Size(536, 87);
             dataGridView2.TabIndex = 15;
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnLimpiar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnLimpiar.Depth = 0;
-            btnLimpiar.HighEmphasis = true;
-            btnLimpiar.Icon = null;
-            btnLimpiar.Location = new Point(877, 306);
-            btnLimpiar.Margin = new Padding(4, 6, 4, 6);
-            btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.NoAccentTextColor = Color.Empty;
-            btnLimpiar.Size = new Size(79, 36);
-            btnLimpiar.TabIndex = 11;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnLimpiar.UseAccentColor = false;
-            btnLimpiar.UseVisualStyleBackColor = true;
-            // 
             // btnEliminar
             // 
             btnEliminar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -181,7 +198,7 @@
             btnEliminar.Depth = 0;
             btnEliminar.HighEmphasis = true;
             btnEliminar.Icon = null;
-            btnEliminar.Location = new Point(714, 306);
+            btnEliminar.Location = new Point(734, 306);
             btnEliminar.Margin = new Padding(4, 6, 4, 6);
             btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             btnEliminar.Name = "btnEliminar";
@@ -193,29 +210,10 @@
             btnEliminar.UseAccentColor = false;
             btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // btnEditar
-            // 
-            btnEditar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnEditar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnEditar.Depth = 0;
-            btnEditar.HighEmphasis = true;
-            btnEditar.Icon = null;
-            btnEditar.Location = new Point(571, 306);
-            btnEditar.Margin = new Padding(4, 6, 4, 6);
-            btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
-            btnEditar.Name = "btnEditar";
-            btnEditar.NoAccentTextColor = Color.Empty;
-            btnEditar.Size = new Size(71, 36);
-            btnEditar.TabIndex = 14;
-            btnEditar.Text = "Editar";
-            btnEditar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnEditar.UseAccentColor = false;
-            btnEditar.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(420, 30);
+            dataGridView1.Location = new Point(420, 40);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(536, 252);
             dataGridView1.TabIndex = 1;
@@ -671,7 +669,7 @@
             btnAgregar.Depth = 0;
             btnAgregar.HighEmphasis = true;
             btnAgregar.Icon = null;
-            btnAgregar.Location = new Point(420, 306);
+            btnAgregar.Location = new Point(559, 306);
             btnAgregar.Margin = new Padding(4, 6, 4, 6);
             btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             btnAgregar.Name = "btnAgregar";
@@ -773,6 +771,9 @@
             // materialCard2
             // 
             materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(lblMontoTotal);
+            materialCard2.Controls.Add(lblMontoITBIS);
+            materialCard2.Controls.Add(lblMontoSubtotal);
             materialCard2.Controls.Add(lblTotal);
             materialCard2.Controls.Add(lblImpuesto);
             materialCard2.Controls.Add(lblSubTotal);
@@ -786,12 +787,48 @@
             materialCard2.Size = new Size(250, 112);
             materialCard2.TabIndex = 14;
             // 
+            // lblMontoTotal
+            // 
+            lblMontoTotal.AutoSize = true;
+            lblMontoTotal.Depth = 0;
+            lblMontoTotal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblMontoTotal.Location = new Point(126, 79);
+            lblMontoTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblMontoTotal.Name = "lblMontoTotal";
+            lblMontoTotal.Size = new Size(32, 19);
+            lblMontoTotal.TabIndex = 22;
+            lblMontoTotal.Text = "0.00";
+            // 
+            // lblMontoITBIS
+            // 
+            lblMontoITBIS.AutoSize = true;
+            lblMontoITBIS.Depth = 0;
+            lblMontoITBIS.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblMontoITBIS.Location = new Point(126, 49);
+            lblMontoITBIS.MouseState = MaterialSkin.MouseState.HOVER;
+            lblMontoITBIS.Name = "lblMontoITBIS";
+            lblMontoITBIS.Size = new Size(32, 19);
+            lblMontoITBIS.TabIndex = 21;
+            lblMontoITBIS.Text = "0.00";
+            // 
+            // lblMontoSubtotal
+            // 
+            lblMontoSubtotal.AutoSize = true;
+            lblMontoSubtotal.Depth = 0;
+            lblMontoSubtotal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblMontoSubtotal.Location = new Point(126, 14);
+            lblMontoSubtotal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblMontoSubtotal.Name = "lblMontoSubtotal";
+            lblMontoSubtotal.Size = new Size(32, 19);
+            lblMontoSubtotal.TabIndex = 20;
+            lblMontoSubtotal.Text = "0.00";
+            // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
             lblTotal.Depth = 0;
             lblTotal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblTotal.Location = new Point(26, 79);
+            lblTotal.Location = new Point(12, 79);
             lblTotal.MouseState = MaterialSkin.MouseState.HOVER;
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(42, 19);
@@ -803,7 +840,7 @@
             lblImpuesto.AutoSize = true;
             lblImpuesto.Depth = 0;
             lblImpuesto.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblImpuesto.Location = new Point(26, 49);
+            lblImpuesto.Location = new Point(11, 49);
             lblImpuesto.MouseState = MaterialSkin.MouseState.HOVER;
             lblImpuesto.Name = "lblImpuesto";
             lblImpuesto.Size = new Size(43, 19);
@@ -936,7 +973,7 @@
             txtBuscarPorCodigo.HideSelection = true;
             txtBuscarPorCodigo.InsertKeyMode = InsertKeyMode.Default;
             txtBuscarPorCodigo.LeadingIcon = null;
-            txtBuscarPorCodigo.Location = new Point(121, 291);
+            txtBuscarPorCodigo.Location = new Point(31, 291);
             txtBuscarPorCodigo.Mask = "";
             txtBuscarPorCodigo.MaxLength = 32767;
             txtBuscarPorCodigo.MouseState = MaterialSkin.MouseState.OUT;
@@ -981,7 +1018,7 @@
             btnCodigoProducto.Depth = 0;
             btnCodigoProducto.HighEmphasis = true;
             btnCodigoProducto.Icon = null;
-            btnCodigoProducto.Location = new Point(31, 299);
+            btnCodigoProducto.Location = new Point(202, 299);
             btnCodigoProducto.Margin = new Padding(4, 6, 4, 6);
             btnCodigoProducto.MouseState = MaterialSkin.MouseState.HOVER;
             btnCodigoProducto.Name = "btnCodigoProducto";
@@ -995,6 +1032,11 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(lblReporteVentasDia);
+            tabPage4.Controls.Add(btnRecarcularPlinq);
+            tabPage4.Controls.Add(materialCard4);
+            tabPage4.Controls.Add(materialCard3);
+            tabPage4.Controls.Add(dgvReporteVentas);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
@@ -1003,15 +1045,275 @@
             tabPage4.Text = "Reporte de Ventas";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
+            // lblReporteVentasDia
             // 
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(986, 505);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Historial";
-            tabPage5.UseVisualStyleBackColor = true;
+            lblReporteVentasDia.AutoSize = true;
+            lblReporteVentasDia.Depth = 0;
+            lblReporteVentasDia.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblReporteVentasDia.Location = new Point(542, 159);
+            lblReporteVentasDia.MouseState = MaterialSkin.MouseState.HOVER;
+            lblReporteVentasDia.Name = "lblReporteVentasDia";
+            lblReporteVentasDia.Size = new Size(163, 19);
+            lblReporteVentasDia.TabIndex = 11;
+            lblReporteVentasDia.Text = "Reporte Ventas Del Dia";
+            // 
+            // btnRecarcularPlinq
+            // 
+            btnRecarcularPlinq.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRecarcularPlinq.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRecarcularPlinq.Depth = 0;
+            btnRecarcularPlinq.HighEmphasis = true;
+            btnRecarcularPlinq.Icon = null;
+            btnRecarcularPlinq.Location = new Point(568, 449);
+            btnRecarcularPlinq.Margin = new Padding(4, 6, 4, 6);
+            btnRecarcularPlinq.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRecarcularPlinq.Name = "btnRecarcularPlinq";
+            btnRecarcularPlinq.NoAccentTextColor = Color.Empty;
+            btnRecarcularPlinq.Size = new Size(112, 36);
+            btnRecarcularPlinq.TabIndex = 10;
+            btnRecarcularPlinq.Text = "Recalcular";
+            btnRecarcularPlinq.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnRecarcularPlinq.UseAccentColor = false;
+            btnRecarcularPlinq.UseVisualStyleBackColor = true;
+            // 
+            // materialCard4
+            // 
+            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard4.Controls.Add(lblReportesdelDia);
+            materialCard4.Controls.Add(lblTotalGeneralFinal);
+            materialCard4.Controls.Add(lblITBISFinal);
+            materialCard4.Controls.Add(lblSubtotalGenealNumero);
+            materialCard4.Controls.Add(lblCantidadVentasFinal);
+            materialCard4.Controls.Add(lblTotalGeneral);
+            materialCard4.Controls.Add(lblNumeroVentas);
+            materialCard4.Controls.Add(lblSubTotalGeneral);
+            materialCard4.Controls.Add(lblITBISGeneral);
+            materialCard4.Depth = 0;
+            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard4.Location = new Point(-1, 190);
+            materialCard4.Margin = new Padding(14);
+            materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard4.Name = "materialCard4";
+            materialCard4.Padding = new Padding(14);
+            materialCard4.Size = new Size(259, 250);
+            materialCard4.TabIndex = 9;
+            // 
+            // lblReportesdelDia
+            // 
+            lblReportesdelDia.AutoSize = true;
+            lblReportesdelDia.Depth = 0;
+            lblReportesdelDia.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblReportesdelDia.Location = new Point(61, 23);
+            lblReportesdelDia.MouseState = MaterialSkin.MouseState.HOVER;
+            lblReportesdelDia.Name = "lblReportesdelDia";
+            lblReportesdelDia.Size = new Size(116, 19);
+            lblReportesdelDia.TabIndex = 14;
+            lblReportesdelDia.Text = "Reportes del Dia";
+            // 
+            // lblTotalGeneralFinal
+            // 
+            lblTotalGeneralFinal.AutoSize = true;
+            lblTotalGeneralFinal.Depth = 0;
+            lblTotalGeneralFinal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblTotalGeneralFinal.Location = new Point(138, 192);
+            lblTotalGeneralFinal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblTotalGeneralFinal.Name = "lblTotalGeneralFinal";
+            lblTotalGeneralFinal.Size = new Size(32, 19);
+            lblTotalGeneralFinal.TabIndex = 13;
+            lblTotalGeneralFinal.Text = "0.00";
+            // 
+            // lblITBISFinal
+            // 
+            lblITBISFinal.AutoSize = true;
+            lblITBISFinal.Depth = 0;
+            lblITBISFinal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblITBISFinal.Location = new Point(138, 154);
+            lblITBISFinal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblITBISFinal.Name = "lblITBISFinal";
+            lblITBISFinal.Size = new Size(32, 19);
+            lblITBISFinal.TabIndex = 12;
+            lblITBISFinal.Text = "0.00";
+            // 
+            // lblSubtotalGenealNumero
+            // 
+            lblSubtotalGenealNumero.AutoSize = true;
+            lblSubtotalGenealNumero.Depth = 0;
+            lblSubtotalGenealNumero.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblSubtotalGenealNumero.Location = new Point(138, 110);
+            lblSubtotalGenealNumero.MouseState = MaterialSkin.MouseState.HOVER;
+            lblSubtotalGenealNumero.Name = "lblSubtotalGenealNumero";
+            lblSubtotalGenealNumero.Size = new Size(32, 19);
+            lblSubtotalGenealNumero.TabIndex = 11;
+            lblSubtotalGenealNumero.Text = "0.00";
+            // 
+            // lblCantidadVentasFinal
+            // 
+            lblCantidadVentasFinal.AutoSize = true;
+            lblCantidadVentasFinal.Depth = 0;
+            lblCantidadVentasFinal.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblCantidadVentasFinal.Location = new Point(140, 69);
+            lblCantidadVentasFinal.MouseState = MaterialSkin.MouseState.HOVER;
+            lblCantidadVentasFinal.Name = "lblCantidadVentasFinal";
+            lblCantidadVentasFinal.Size = new Size(10, 19);
+            lblCantidadVentasFinal.TabIndex = 10;
+            lblCantidadVentasFinal.Text = "0";
+            // 
+            // lblTotalGeneral
+            // 
+            lblTotalGeneral.AutoSize = true;
+            lblTotalGeneral.Depth = 0;
+            lblTotalGeneral.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblTotalGeneral.Location = new Point(1, 192);
+            lblTotalGeneral.MouseState = MaterialSkin.MouseState.HOVER;
+            lblTotalGeneral.Name = "lblTotalGeneral";
+            lblTotalGeneral.Size = new Size(100, 19);
+            lblTotalGeneral.TabIndex = 9;
+            lblTotalGeneral.Text = "Total General:";
+            // 
+            // lblNumeroVentas
+            // 
+            lblNumeroVentas.AutoSize = true;
+            lblNumeroVentas.Depth = 0;
+            lblNumeroVentas.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblNumeroVentas.Location = new Point(4, 69);
+            lblNumeroVentas.MouseState = MaterialSkin.MouseState.HOVER;
+            lblNumeroVentas.Name = "lblNumeroVentas";
+            lblNumeroVentas.Size = new Size(122, 19);
+            lblNumeroVentas.TabIndex = 8;
+            lblNumeroVentas.Text = "Cantidad Ventas:";
+            // 
+            // lblSubTotalGeneral
+            // 
+            lblSubTotalGeneral.AutoSize = true;
+            lblSubTotalGeneral.Depth = 0;
+            lblSubTotalGeneral.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblSubTotalGeneral.Location = new Point(4, 110);
+            lblSubTotalGeneral.MouseState = MaterialSkin.MouseState.HOVER;
+            lblSubTotalGeneral.Name = "lblSubTotalGeneral";
+            lblSubTotalGeneral.Size = new Size(128, 19);
+            lblSubTotalGeneral.TabIndex = 7;
+            lblSubTotalGeneral.Text = "SubTotal General:";
+            // 
+            // lblITBISGeneral
+            // 
+            lblITBISGeneral.AutoSize = true;
+            lblITBISGeneral.Depth = 0;
+            lblITBISGeneral.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblITBISGeneral.Location = new Point(5, 154);
+            lblITBISGeneral.MouseState = MaterialSkin.MouseState.HOVER;
+            lblITBISGeneral.Name = "lblITBISGeneral";
+            lblITBISGeneral.Size = new Size(77, 19);
+            lblITBISGeneral.TabIndex = 6;
+            lblITBISGeneral.Text = "ITBIS 18%:";
+            // 
+            // materialCard3
+            // 
+            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Controls.Add(lblEstadoCargando);
+            materialCard3.Controls.Add(lblEstado);
+            materialCard3.Controls.Add(btnReporte);
+            materialCard3.Controls.Add(lblProgreso);
+            materialCard3.Controls.Add(prbProgreso);
+            materialCard3.Controls.Add(dtpFecha);
+            materialCard3.Controls.Add(lblFecha);
+            materialCard3.Depth = 0;
+            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard3.Location = new Point(0, 0);
+            materialCard3.Margin = new Padding(14);
+            materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard3.Name = "materialCard3";
+            materialCard3.Padding = new Padding(14);
+            materialCard3.Size = new Size(986, 98);
+            materialCard3.TabIndex = 1;
+            // 
+            // lblEstadoCargando
+            // 
+            lblEstadoCargando.AutoSize = true;
+            lblEstadoCargando.Depth = 0;
+            lblEstadoCargando.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblEstadoCargando.Location = new Point(417, 61);
+            lblEstadoCargando.MouseState = MaterialSkin.MouseState.HOVER;
+            lblEstadoCargando.Name = "lblEstadoCargando";
+            lblEstadoCargando.Size = new Size(82, 19);
+            lblEstadoCargando.TabIndex = 6;
+            lblEstadoCargando.Text = "Cargando...";
+            // 
+            // lblEstado
+            // 
+            lblEstado.AutoSize = true;
+            lblEstado.Depth = 0;
+            lblEstado.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblEstado.Location = new Point(357, 61);
+            lblEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(54, 19);
+            lblEstado.TabIndex = 5;
+            lblEstado.Text = "Estado:";
+            // 
+            // btnReporte
+            // 
+            btnReporte.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnReporte.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnReporte.Depth = 0;
+            btnReporte.HighEmphasis = true;
+            btnReporte.Icon = null;
+            btnReporte.Location = new Point(357, 9);
+            btnReporte.Margin = new Padding(4, 6, 4, 6);
+            btnReporte.MouseState = MaterialSkin.MouseState.HOVER;
+            btnReporte.Name = "btnReporte";
+            btnReporte.NoAccentTextColor = Color.Empty;
+            btnReporte.Size = new Size(146, 36);
+            btnReporte.TabIndex = 4;
+            btnReporte.Text = "Cargar Reporte";
+            btnReporte.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnReporte.UseAccentColor = false;
+            btnReporte.UseVisualStyleBackColor = true;
+            // 
+            // lblProgreso
+            // 
+            lblProgreso.AutoSize = true;
+            lblProgreso.Depth = 0;
+            lblProgreso.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblProgreso.Location = new Point(6, 62);
+            lblProgreso.MouseState = MaterialSkin.MouseState.HOVER;
+            lblProgreso.Name = "lblProgreso";
+            lblProgreso.Size = new Size(127, 19);
+            lblProgreso.TabIndex = 3;
+            lblProgreso.Text = "Barra de Progreso";
+            // 
+            // prbProgreso
+            // 
+            prbProgreso.Location = new Point(139, 62);
+            prbProgreso.Name = "prbProgreso";
+            prbProgreso.Size = new Size(121, 23);
+            prbProgreso.TabIndex = 2;
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Location = new Point(60, 14);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(200, 23);
+            dtpFecha.TabIndex = 1;
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Depth = 0;
+            lblFecha.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblFecha.Location = new Point(6, 14);
+            lblFecha.MouseState = MaterialSkin.MouseState.HOVER;
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(48, 19);
+            lblFecha.TabIndex = 0;
+            lblFecha.Text = "Fecha:";
+            // 
+            // dgvReporteVentas
+            // 
+            dgvReporteVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvReporteVentas.Location = new Point(346, 190);
+            dgvReporteVentas.Name = "dgvReporteVentas";
+            dgvReporteVentas.Size = new Size(550, 250);
+            dgvReporteVentas.TabIndex = 0;
             // 
             // FormMenuPrincipal
             // 
@@ -1035,6 +1337,13 @@
             materialCard2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nmrCantidadProducto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            materialCard4.ResumeLayout(false);
+            materialCard4.PerformLayout();
+            materialCard3.ResumeLayout(false);
+            materialCard3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvReporteVentas).EndInit();
             ResumeLayout(false);
         }
 
@@ -1045,7 +1354,6 @@
         private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage tabPage4;
-        private TabPage tabPage5;
         private DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtBuscarProducto;
@@ -1055,9 +1363,7 @@
         private MaterialSkin.Controls.MaterialMaskedTextBox txtPrecio;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtNombre;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtCodigo;
-        private MaterialSkin.Controls.MaterialButton btnLimpiar;
         private MaterialSkin.Controls.MaterialButton btnEliminar;
-        private MaterialSkin.Controls.MaterialButton btnEditar;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtStockMinimo;
         private MaterialSkin.Controls.MaterialButton btnAgregar;
         private MaterialSkin.Controls.MaterialLabel lblStockMinimo;
@@ -1090,5 +1396,30 @@
         private MaterialSkin.Controls.MaterialLabel lblSubTotal;
         private MaterialSkin.Controls.MaterialComboBox cmbMetodoPago;
         private MaterialSkin.Controls.MaterialLabel lblMetodoPago;
+        private MaterialSkin.Controls.MaterialLabel lblMontoTotal;
+        private MaterialSkin.Controls.MaterialLabel lblMontoITBIS;
+        private MaterialSkin.Controls.MaterialLabel lblMontoSubtotal;
+        private MaterialSkin.Controls.MaterialCard materialCard3;
+        private DataGridView dgvReporteVentas;
+        private ProgressBar prbProgreso;
+        private DateTimePicker dtpFecha;
+        private MaterialSkin.Controls.MaterialLabel lblFecha;
+        private MaterialSkin.Controls.MaterialLabel lblProgreso;
+        private MaterialSkin.Controls.MaterialButton btnReporte;
+        private MaterialSkin.Controls.MaterialCard materialCard4;
+        private MaterialSkin.Controls.MaterialLabel lblNumeroVentas;
+        private MaterialSkin.Controls.MaterialLabel lblSubTotalGeneral;
+        private MaterialSkin.Controls.MaterialLabel lblITBISGeneral;
+        private MaterialSkin.Controls.MaterialLabel lblEstado;
+        private MaterialSkin.Controls.MaterialLabel lblTotalGeneral;
+        private MaterialSkin.Controls.MaterialLabel lblCantidadVentasFinal;
+        private MaterialSkin.Controls.MaterialLabel lblTotalGeneralFinal;
+        private MaterialSkin.Controls.MaterialLabel lblITBISFinal;
+        private MaterialSkin.Controls.MaterialLabel lblSubtotalGenealNumero;
+        private MaterialSkin.Controls.MaterialLabel lblReporteVentasDia;
+        private MaterialSkin.Controls.MaterialButton btnRecarcularPlinq;
+        private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
+        private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
+        private MaterialSkin.Controls.MaterialLabel lblInventario;
     }
 }
