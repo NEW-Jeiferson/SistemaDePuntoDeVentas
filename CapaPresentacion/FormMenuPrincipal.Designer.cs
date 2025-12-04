@@ -1218,12 +1218,12 @@
             materialCard3.Controls.Add(lblFecha);
             materialCard3.Depth = 0;
             materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(0, 0);
+            materialCard3.Location = new Point(-4, 0);
             materialCard3.Margin = new Padding(14);
             materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard3.Name = "materialCard3";
             materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(986, 98);
+            materialCard3.Size = new Size(1007, 98);
             materialCard3.TabIndex = 1;
             // 
             // lblEstadoCargando
