@@ -141,6 +141,7 @@
             btnAcceder.TabStop = false;
             btnAcceder.Text = "Acceder";
             btnAcceder.UseVisualStyleBackColor = false;
+            btnAcceder.Click += btnAcceder_Click;
             // 
             // btnCerrar
             // 

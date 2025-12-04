@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaNegocios.Login
+namespace CapaNegocios.Entidades
 {
-    internal class Usuario
+    internal class Categorias
     {
-
     }
 }

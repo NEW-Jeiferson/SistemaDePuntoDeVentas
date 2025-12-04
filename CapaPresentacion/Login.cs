@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using CapaNegocios.Login;
 
 namespace CapaPresentacion
 {
@@ -86,6 +87,56 @@ namespace CapaPresentacion
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.DimGray;
                 txtPassword.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void btnAcceder_Click(object sender, EventArgs e)
+        {
+            //TODO: Lógica para el botón de Acceder
+            string usuario = txtUsuario.Text.Trim();
+            string contrasena = txtPassword.Text.Trim();
+
+            //TODO: Validar que los campos no estén vacíos
+            if (usuario == "" || contrasena == "")
+            {
+                MessageBox.Show("Debe completar usuario y contraseña.",
+                                "Campos incompletos",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                return;
+            }
+
+            //TODO: Validar las credenciales usando la capa de negocio
+            LoginNegocio login = new LoginNegocio();
+
+            //TODO: Verificar si el login es válido
+            bool valido = login.ValidarLogin(usuario, contrasena);
+
+            //TODO: Mostrar mensaje según el resultado de la validación
+            if (valido)
+            {
+                
+                MessageBox.Show("Bienvenido " + usuario,
+                                "Acceso concedido",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                
+                FormMenuPrincipal menu = new FormMenuPrincipal();
+                menu.Show();
+
+                this.Hide();
+            }
+            else
+            {
+               
+                MessageBox.Show("Usuario o contraseña incorrectos.",
+                                "Acceso denegado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                txtPassword.Clear();
+                txtPassword.Focus();
             }
         }
     }
