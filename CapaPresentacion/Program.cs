@@ -13,7 +13,7 @@ namespace CapaPresentacion
             ApplicationConfiguration.Initialize();
 
             //TODO: Iniciar la aplicación con el formulario de Login
-            Application.Run(new Login());
+            Application.Run(new FormMenuPrincipal());
         }
     }
 }
