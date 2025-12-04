@@ -43,5 +43,25 @@ namespace CapaPresentacion
                 txtBuscarProducto.ForeColor = Color.LightGray;
             }
         }
+
+        private void txtBuscarPorCodigo_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscarPorCodigo.Text == "Ingresa el Codigo")
+            {
+                txtBuscarPorCodigo.Text = "";
+                txtBuscarPorCodigo.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtBuscarPorCodigo_Leave(object sender, EventArgs e)
+        {
+            if (txtBuscarPorCodigo.Text == "")
+            {
+                txtBuscarPorCodigo.Text = "Ingresa el Codigo";
+                txtBuscarPorCodigo.ForeColor = Color.LightGray;
+            }
+        }
+
+       
     }
 }
