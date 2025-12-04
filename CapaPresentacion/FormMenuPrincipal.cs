@@ -61,5 +61,7 @@ namespace CapaPresentacion
                 txtBuscarPorCodigo.ForeColor = Color.LightGray;
             }
         }
+
+       
     }
 }
