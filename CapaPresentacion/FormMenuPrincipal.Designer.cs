@@ -99,7 +99,6 @@
             dtpFecha = new DateTimePicker();
             lblFecha = new MaterialSkin.Controls.MaterialLabel();
             dgvReporteVentas = new DataGridView();
-            tabPage5 = new TabPage();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -122,7 +121,6 @@
             materialTabControl1.Controls.Add(tabPage2);
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
-            materialTabControl1.Controls.Add(tabPage5);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.Location = new Point(3, 64);
@@ -1317,16 +1315,6 @@
             dgvReporteVentas.Size = new Size(550, 250);
             dgvReporteVentas.TabIndex = 0;
             // 
-            // tabPage5
-            // 
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(986, 505);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Registro Clientes";
-            tabPage5.UseVisualStyleBackColor = true;
-            // 
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -1433,6 +1421,5 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
-        private TabPage tabPage5;
     }
 }
