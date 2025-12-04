@@ -99,6 +99,7 @@
             dtpFecha = new DateTimePicker();
             lblFecha = new MaterialSkin.Controls.MaterialLabel();
             dgvReporteVentas = new DataGridView();
+            tabPage5 = new TabPage();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -121,6 +122,7 @@
             materialTabControl1.Controls.Add(tabPage2);
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
+            materialTabControl1.Controls.Add(tabPage5);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.Location = new Point(3, 64);
@@ -866,14 +868,14 @@
             btnQuitarProducto.Depth = 0;
             btnQuitarProducto.HighEmphasis = true;
             btnQuitarProducto.Icon = null;
-            btnQuitarProducto.Location = new Point(685, 291);
+            btnQuitarProducto.Location = new Point(881, 284);
             btnQuitarProducto.Margin = new Padding(4, 6, 4, 6);
             btnQuitarProducto.MouseState = MaterialSkin.MouseState.HOVER;
             btnQuitarProducto.Name = "btnQuitarProducto";
             btnQuitarProducto.NoAccentTextColor = Color.Empty;
-            btnQuitarProducto.Size = new Size(167, 36);
+            btnQuitarProducto.Size = new Size(73, 36);
             btnQuitarProducto.TabIndex = 13;
-            btnQuitarProducto.Text = "Quitar del Carrito";
+            btnQuitarProducto.Text = "Quitar";
             btnQuitarProducto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnQuitarProducto.UseAccentColor = false;
             btnQuitarProducto.UseVisualStyleBackColor = true;
@@ -1218,12 +1220,12 @@
             materialCard3.Controls.Add(lblFecha);
             materialCard3.Depth = 0;
             materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(0, 0);
+            materialCard3.Location = new Point(-4, 0);
             materialCard3.Margin = new Padding(14);
             materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard3.Name = "materialCard3";
             materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(986, 98);
+            materialCard3.Size = new Size(1007, 98);
             materialCard3.TabIndex = 1;
             // 
             // lblEstadoCargando
@@ -1314,6 +1316,16 @@
             dgvReporteVentas.Name = "dgvReporteVentas";
             dgvReporteVentas.Size = new Size(550, 250);
             dgvReporteVentas.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(986, 505);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Registro Clientes";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // FormMenuPrincipal
             // 
@@ -1421,5 +1433,6 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
+        private TabPage tabPage5;
     }
 }
