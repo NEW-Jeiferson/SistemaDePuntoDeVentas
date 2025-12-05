@@ -56,6 +56,8 @@
             btnBuscar = new MaterialSkin.Controls.MaterialButton();
             btnAgregar = new MaterialSkin.Controls.MaterialButton();
             tabPage3 = new TabPage();
+            cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
+            lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
             cmbMetodoPago = new MaterialSkin.Controls.MaterialComboBox();
             lblMetodoPago = new MaterialSkin.Controls.MaterialLabel();
             dataGridView3 = new DataGridView();
@@ -99,7 +101,6 @@
             dtpFecha = new DateTimePicker();
             lblFecha = new MaterialSkin.Controls.MaterialLabel();
             dgvReporteVentas = new DataGridView();
-            tabPage5 = new TabPage();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -122,7 +123,6 @@
             materialTabControl1.Controls.Add(tabPage2);
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
-            materialTabControl1.Controls.Add(tabPage5);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.Location = new Point(3, 64);
@@ -685,6 +685,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(cmbTipoCliente);
+            tabPage3.Controls.Add(lblTipoCliente);
             tabPage3.Controls.Add(cmbMetodoPago);
             tabPage3.Controls.Add(lblMetodoPago);
             tabPage3.Controls.Add(dataGridView3);
@@ -707,6 +709,40 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Carrito";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // cmbTipoCliente
+            // 
+            cmbTipoCliente.AutoResize = false;
+            cmbTipoCliente.BackColor = Color.FromArgb(255, 255, 255);
+            cmbTipoCliente.Depth = 0;
+            cmbTipoCliente.DrawMode = DrawMode.OwnerDrawVariable;
+            cmbTipoCliente.DropDownHeight = 174;
+            cmbTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoCliente.DropDownWidth = 121;
+            cmbTipoCliente.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cmbTipoCliente.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cmbTipoCliente.FormattingEnabled = true;
+            cmbTipoCliente.IntegralHeight = false;
+            cmbTipoCliente.ItemHeight = 43;
+            cmbTipoCliente.Location = new Point(685, 281);
+            cmbTipoCliente.MaxDropDownItems = 4;
+            cmbTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
+            cmbTipoCliente.Name = "cmbTipoCliente";
+            cmbTipoCliente.Size = new Size(161, 49);
+            cmbTipoCliente.StartIndex = 0;
+            cmbTipoCliente.TabIndex = 20;
+            // 
+            // lblTipoCliente
+            // 
+            lblTipoCliente.AutoSize = true;
+            lblTipoCliente.Depth = 0;
+            lblTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblTipoCliente.Location = new Point(554, 294);
+            lblTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            lblTipoCliente.Name = "lblTipoCliente";
+            lblTipoCliente.Size = new Size(106, 19);
+            lblTipoCliente.TabIndex = 19;
+            lblTipoCliente.Text = "Tipo de Cliente";
             // 
             // cmbMetodoPago
             // 
@@ -1317,16 +1353,6 @@
             dgvReporteVentas.Size = new Size(550, 250);
             dgvReporteVentas.TabIndex = 0;
             // 
-            // tabPage5
-            // 
-            tabPage5.Location = new Point(4, 24);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(986, 505);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Registro Clientes";
-            tabPage5.UseVisualStyleBackColor = true;
-            // 
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -1334,6 +1360,7 @@
             Controls.Add(materialTabControl1);
             DrawerTabControl = materialTabControl1;
             Name = "FormMenuPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Colmado Alegria";
             materialTabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
@@ -1433,6 +1460,7 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
-        private TabPage tabPage5;
+        private MaterialSkin.Controls.MaterialComboBox cmbTipoCliente;
+        private MaterialSkin.Controls.MaterialLabel lblTipoCliente;
     }
 }
