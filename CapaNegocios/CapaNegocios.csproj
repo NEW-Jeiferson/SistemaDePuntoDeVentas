@@ -10,8 +10,4 @@
     <ProjectReference Include="..\SistemaDePuntoDeVentas\CapaDatos.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Eventos\" />
-  </ItemGroup>
-
 </Project>
