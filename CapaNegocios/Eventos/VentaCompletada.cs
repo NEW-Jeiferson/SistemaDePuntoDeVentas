@@ -8,7 +8,7 @@ using CapaNegocios.Entidades;
 namespace CapaNegocios.Eventos
 {
     //TODO: Clase para manejar eventos relacionados con la finalización de una venta
-    public class VentaCompletadaEventArgs : EventArgs
+    /*public class VentaCompletadaEventArgs : EventArgs
     {
         public Ventas Venta { get; set; }
         public decimal TotalVendido { get; set; }
@@ -21,5 +21,5 @@ namespace CapaNegocios.Eventos
             TotalVendido = venta.Total;
             MetodoPago = venta.MetodoPago;
         }
-    }
+    }*/
 }
