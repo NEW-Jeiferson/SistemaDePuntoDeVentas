@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaNegocios.Entidades
+namespace CapaNegocios.Servicios
 {
-   
+    internal class MetodoFormateoDePrecio
+    {
+    }
 }
