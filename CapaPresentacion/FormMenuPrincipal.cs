@@ -1,5 +1,9 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
+using CapaNegocios.Servicios;
+using CapaNegocios.Entidades;
+using CapaNegocios.Exepciones;
+
 namespace CapaPresentacion
 {
     public partial class FormMenuPrincipal : MaterialSkin.Controls.MaterialForm
@@ -10,21 +14,20 @@ namespace CapaPresentacion
 
             // Configurar MaterialSkin
             var materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this); // 'this' se refiere a tu formulario actual
+            materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
 
             // --- CONFIGURACIÓN CON COLORES VERDES ---
             materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(
-                MaterialSkin.Primary.Green700,      // Primary Color (el color principal, más oscuro)
+                MaterialSkin.Primary.Green700,  
                 MaterialSkin.Primary.Green900,
                 MaterialSkin.Primary.Green500,
                 MaterialSkin.Accent.LightGreen200,
                 MaterialSkin.TextShade.WHITE
             );
 
-            // Cambiar color del label manualmente
-            //lblNombreC.ForeColor = Color.White;
         }
+
 
         private void txtBuscarProducto_Enter(object sender, EventArgs e)
         {
@@ -62,6 +65,5 @@ namespace CapaPresentacion
             }
         }
 
-       
     }
 }
