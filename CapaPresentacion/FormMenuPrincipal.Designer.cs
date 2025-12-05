@@ -99,6 +99,8 @@
             dtpFecha = new DateTimePicker();
             lblFecha = new MaterialSkin.Controls.MaterialLabel();
             dgvReporteVentas = new DataGridView();
+            lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
+            cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -683,6 +685,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(cmbTipoCliente);
+            tabPage3.Controls.Add(lblTipoCliente);
             tabPage3.Controls.Add(cmbMetodoPago);
             tabPage3.Controls.Add(lblMetodoPago);
             tabPage3.Controls.Add(dataGridView3);
@@ -866,14 +870,14 @@
             btnQuitarProducto.Depth = 0;
             btnQuitarProducto.HighEmphasis = true;
             btnQuitarProducto.Icon = null;
-            btnQuitarProducto.Location = new Point(685, 291);
+            btnQuitarProducto.Location = new Point(881, 284);
             btnQuitarProducto.Margin = new Padding(4, 6, 4, 6);
             btnQuitarProducto.MouseState = MaterialSkin.MouseState.HOVER;
             btnQuitarProducto.Name = "btnQuitarProducto";
             btnQuitarProducto.NoAccentTextColor = Color.Empty;
-            btnQuitarProducto.Size = new Size(167, 36);
+            btnQuitarProducto.Size = new Size(73, 36);
             btnQuitarProducto.TabIndex = 13;
-            btnQuitarProducto.Text = "Quitar del Carrito";
+            btnQuitarProducto.Text = "Quitar";
             btnQuitarProducto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnQuitarProducto.UseAccentColor = false;
             btnQuitarProducto.UseVisualStyleBackColor = true;
@@ -1218,12 +1222,12 @@
             materialCard3.Controls.Add(lblFecha);
             materialCard3.Depth = 0;
             materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(0, 0);
+            materialCard3.Location = new Point(-4, 0);
             materialCard3.Margin = new Padding(14);
             materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard3.Name = "materialCard3";
             materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(986, 98);
+            materialCard3.Size = new Size(1007, 98);
             materialCard3.TabIndex = 1;
             // 
             // lblEstadoCargando
@@ -1314,6 +1318,40 @@
             dgvReporteVentas.Name = "dgvReporteVentas";
             dgvReporteVentas.Size = new Size(550, 250);
             dgvReporteVentas.TabIndex = 0;
+            // 
+            // lblTipoCliente
+            // 
+            lblTipoCliente.AutoSize = true;
+            lblTipoCliente.Depth = 0;
+            lblTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblTipoCliente.Location = new Point(554, 294);
+            lblTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            lblTipoCliente.Name = "lblTipoCliente";
+            lblTipoCliente.Size = new Size(106, 19);
+            lblTipoCliente.TabIndex = 19;
+            lblTipoCliente.Text = "Tipo de Cliente";
+            // 
+            // cmbTipoCliente
+            // 
+            cmbTipoCliente.AutoResize = false;
+            cmbTipoCliente.BackColor = Color.FromArgb(255, 255, 255);
+            cmbTipoCliente.Depth = 0;
+            cmbTipoCliente.DrawMode = DrawMode.OwnerDrawVariable;
+            cmbTipoCliente.DropDownHeight = 174;
+            cmbTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoCliente.DropDownWidth = 121;
+            cmbTipoCliente.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cmbTipoCliente.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cmbTipoCliente.FormattingEnabled = true;
+            cmbTipoCliente.IntegralHeight = false;
+            cmbTipoCliente.ItemHeight = 43;
+            cmbTipoCliente.Location = new Point(685, 281);
+            cmbTipoCliente.MaxDropDownItems = 4;
+            cmbTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
+            cmbTipoCliente.Name = "cmbTipoCliente";
+            cmbTipoCliente.Size = new Size(161, 49);
+            cmbTipoCliente.StartIndex = 0;
+            cmbTipoCliente.TabIndex = 20;
             // 
             // FormMenuPrincipal
             // 
@@ -1421,5 +1459,7 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
+        private MaterialSkin.Controls.MaterialComboBox cmbTipoCliente;
+        private MaterialSkin.Controls.MaterialLabel lblTipoCliente;
     }
 }
