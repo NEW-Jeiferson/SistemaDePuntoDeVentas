@@ -32,12 +32,12 @@
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            btnBuscarProducto = new MaterialSkin.Controls.MaterialButton();
+            txtBuscarProducto = new MaterialSkin.Controls.MaterialMaskedTextBox();
             lblInventario = new MaterialSkin.Controls.MaterialLabel();
             lblProductoStockMinimo = new MaterialSkin.Controls.MaterialLabel();
             dataGridView2 = new DataGridView();
             dataGridView1 = new DataGridView();
-            txtBuscarProducto = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            btnBuscar = new MaterialSkin.Controls.MaterialButton();
             tabPage3 = new TabPage();
             cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
             lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
@@ -84,6 +84,21 @@
             dtpFecha = new DateTimePicker();
             lblFecha = new MaterialSkin.Controls.MaterialLabel();
             dgvReporteVentas = new DataGridView();
+            tabPage5 = new TabPage();
+            btnQuitarCliente = new MaterialSkin.Controls.MaterialButton();
+            btnIngreseCliente = new MaterialSkin.Controls.MaterialButton();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            cmbIngreseTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
+            txtIngreseRNC = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            txtIngreseNombreCliente = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            lblIngreseNombre = new MaterialSkin.Controls.MaterialLabel();
+            lblIngreseTipoCliente = new MaterialSkin.Controls.MaterialLabel();
+            lblIngreseRNC = new MaterialSkin.Controls.MaterialLabel();
+            lblClientesRegistrados = new MaterialSkin.Controls.MaterialLabel();
+            dataGridView5 = new DataGridView();
+            btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
+            txtRncCliente = new MaterialSkin.Controls.MaterialMaskedTextBox();
             materialTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -97,6 +112,9 @@
             materialCard4.SuspendLayout();
             materialCard3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReporteVentas).BeginInit();
+            tabPage5.SuspendLayout();
+            materialCard1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -105,6 +123,7 @@
             materialTabControl1.Controls.Add(tabPage2);
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
+            materialTabControl1.Controls.Add(tabPage5);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.Location = new Point(3, 64);
@@ -127,7 +146,7 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(btnBuscar);
+            tabPage2.Controls.Add(btnBuscarProducto);
             tabPage2.Controls.Add(txtBuscarProducto);
             tabPage2.Controls.Add(lblInventario);
             tabPage2.Controls.Add(lblProductoStockMinimo);
@@ -141,46 +160,24 @@
             tabPage2.Text = "Inventario";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lblInventario
+            // btnBuscarProducto
             // 
-            lblInventario.AutoSize = true;
-            lblInventario.Depth = 0;
-            lblInventario.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblInventario.Location = new Point(449, 53);
-            lblInventario.MouseState = MaterialSkin.MouseState.HOVER;
-            lblInventario.Name = "lblInventario";
-            lblInventario.Size = new Size(71, 19);
-            lblInventario.TabIndex = 20;
-            lblInventario.Text = "Inventario";
-            // 
-            // lblProductoStockMinimo
-            // 
-            lblProductoStockMinimo.AutoSize = true;
-            lblProductoStockMinimo.Depth = 0;
-            lblProductoStockMinimo.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblProductoStockMinimo.ForeColor = Color.FromArgb(211, 47, 47);
-            lblProductoStockMinimo.Location = new Point(393, 387);
-            lblProductoStockMinimo.MouseState = MaterialSkin.MouseState.HOVER;
-            lblProductoStockMinimo.Name = "lblProductoStockMinimo";
-            lblProductoStockMinimo.Size = new Size(185, 19);
-            lblProductoStockMinimo.TabIndex = 19;
-            lblProductoStockMinimo.Text = "Productos Con Stock Bajo";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(215, 412);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(536, 87);
-            dataGridView2.TabIndex = 15;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(215, 80);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(536, 252);
-            dataGridView1.TabIndex = 1;
+            btnBuscarProducto.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBuscarProducto.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnBuscarProducto.Depth = 0;
+            btnBuscarProducto.HighEmphasis = true;
+            btnBuscarProducto.Icon = null;
+            btnBuscarProducto.Location = new Point(263, 18);
+            btnBuscarProducto.Margin = new Padding(4, 6, 4, 6);
+            btnBuscarProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            btnBuscarProducto.Name = "btnBuscarProducto";
+            btnBuscarProducto.NoAccentTextColor = Color.Empty;
+            btnBuscarProducto.Size = new Size(77, 36);
+            btnBuscarProducto.TabIndex = 2;
+            btnBuscarProducto.Text = "Buscar";
+            btnBuscarProducto.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnBuscarProducto.UseAccentColor = false;
+            btnBuscarProducto.UseVisualStyleBackColor = true;
             // 
             // txtBuscarProducto
             // 
@@ -226,24 +223,46 @@
             txtBuscarProducto.Enter += txtBuscarProducto_Enter;
             txtBuscarProducto.Leave += txtBuscarProducto_Leave;
             // 
-            // btnBuscar
+            // lblInventario
             // 
-            btnBuscar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnBuscar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnBuscar.Depth = 0;
-            btnBuscar.HighEmphasis = true;
-            btnBuscar.Icon = null;
-            btnBuscar.Location = new Point(263, 18);
-            btnBuscar.Margin = new Padding(4, 6, 4, 6);
-            btnBuscar.MouseState = MaterialSkin.MouseState.HOVER;
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.NoAccentTextColor = Color.Empty;
-            btnBuscar.Size = new Size(77, 36);
-            btnBuscar.TabIndex = 2;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnBuscar.UseAccentColor = false;
-            btnBuscar.UseVisualStyleBackColor = true;
+            lblInventario.AutoSize = true;
+            lblInventario.Depth = 0;
+            lblInventario.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblInventario.Location = new Point(449, 53);
+            lblInventario.MouseState = MaterialSkin.MouseState.HOVER;
+            lblInventario.Name = "lblInventario";
+            lblInventario.Size = new Size(71, 19);
+            lblInventario.TabIndex = 20;
+            lblInventario.Text = "Inventario";
+            // 
+            // lblProductoStockMinimo
+            // 
+            lblProductoStockMinimo.AutoSize = true;
+            lblProductoStockMinimo.Depth = 0;
+            lblProductoStockMinimo.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblProductoStockMinimo.ForeColor = Color.FromArgb(211, 47, 47);
+            lblProductoStockMinimo.Location = new Point(393, 387);
+            lblProductoStockMinimo.MouseState = MaterialSkin.MouseState.HOVER;
+            lblProductoStockMinimo.Name = "lblProductoStockMinimo";
+            lblProductoStockMinimo.Size = new Size(185, 19);
+            lblProductoStockMinimo.TabIndex = 19;
+            lblProductoStockMinimo.Text = "Productos Con Stock Bajo";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(215, 412);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(536, 87);
+            dataGridView2.TabIndex = 15;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(215, 80);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(536, 252);
+            dataGridView1.TabIndex = 1;
             // 
             // tabPage3
             // 
@@ -915,6 +934,316 @@
             dgvReporteVentas.Size = new Size(550, 250);
             dgvReporteVentas.TabIndex = 0;
             // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(btnQuitarCliente);
+            tabPage5.Controls.Add(btnIngreseCliente);
+            tabPage5.Controls.Add(materialCard1);
+            tabPage5.Controls.Add(lblClientesRegistrados);
+            tabPage5.Controls.Add(dataGridView5);
+            tabPage5.Controls.Add(btnBuscarCliente);
+            tabPage5.Controls.Add(txtRncCliente);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(986, 505);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Agregar Cliente";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnQuitarCliente
+            // 
+            btnQuitarCliente.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnQuitarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnQuitarCliente.Depth = 0;
+            btnQuitarCliente.HighEmphasis = true;
+            btnQuitarCliente.Icon = null;
+            btnQuitarCliente.Location = new Point(725, 412);
+            btnQuitarCliente.Margin = new Padding(4, 6, 4, 6);
+            btnQuitarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            btnQuitarCliente.Name = "btnQuitarCliente";
+            btnQuitarCliente.NoAccentTextColor = Color.Empty;
+            btnQuitarCliente.Size = new Size(135, 36);
+            btnQuitarCliente.TabIndex = 9;
+            btnQuitarCliente.Text = "Quitar Cliente";
+            btnQuitarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnQuitarCliente.UseAccentColor = false;
+            btnQuitarCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnIngreseCliente
+            // 
+            btnIngreseCliente.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnIngreseCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnIngreseCliente.Depth = 0;
+            btnIngreseCliente.HighEmphasis = true;
+            btnIngreseCliente.Icon = null;
+            btnIngreseCliente.Location = new Point(350, 412);
+            btnIngreseCliente.Margin = new Padding(4, 6, 4, 6);
+            btnIngreseCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            btnIngreseCliente.Name = "btnIngreseCliente";
+            btnIngreseCliente.NoAccentTextColor = Color.Empty;
+            btnIngreseCliente.Size = new Size(136, 36);
+            btnIngreseCliente.TabIndex = 8;
+            btnIngreseCliente.Text = "Añadir Cliente";
+            btnIngreseCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnIngreseCliente.UseAccentColor = false;
+            btnIngreseCliente.UseVisualStyleBackColor = true;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(cmbIngreseTipoCliente);
+            materialCard1.Controls.Add(txtIngreseRNC);
+            materialCard1.Controls.Add(txtIngreseNombreCliente);
+            materialCard1.Controls.Add(materialLabel1);
+            materialCard1.Controls.Add(lblIngreseNombre);
+            materialCard1.Controls.Add(lblIngreseTipoCliente);
+            materialCard1.Controls.Add(lblIngreseRNC);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(-11, 103);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(321, 300);
+            materialCard1.TabIndex = 7;
+            // 
+            // cmbIngreseTipoCliente
+            // 
+            cmbIngreseTipoCliente.AutoResize = false;
+            cmbIngreseTipoCliente.BackColor = Color.FromArgb(255, 255, 255);
+            cmbIngreseTipoCliente.Depth = 0;
+            cmbIngreseTipoCliente.DrawMode = DrawMode.OwnerDrawVariable;
+            cmbIngreseTipoCliente.DropDownHeight = 174;
+            cmbIngreseTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbIngreseTipoCliente.DropDownWidth = 121;
+            cmbIngreseTipoCliente.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cmbIngreseTipoCliente.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cmbIngreseTipoCliente.FormattingEnabled = true;
+            cmbIngreseTipoCliente.IntegralHeight = false;
+            cmbIngreseTipoCliente.ItemHeight = 43;
+            cmbIngreseTipoCliente.Location = new Point(133, 223);
+            cmbIngreseTipoCliente.MaxDropDownItems = 4;
+            cmbIngreseTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
+            cmbIngreseTipoCliente.Name = "cmbIngreseTipoCliente";
+            cmbIngreseTipoCliente.Size = new Size(164, 49);
+            cmbIngreseTipoCliente.StartIndex = 0;
+            cmbIngreseTipoCliente.TabIndex = 10;
+            // 
+            // txtIngreseRNC
+            // 
+            txtIngreseRNC.AllowPromptAsInput = true;
+            txtIngreseRNC.AnimateReadOnly = false;
+            txtIngreseRNC.AsciiOnly = false;
+            txtIngreseRNC.BackgroundImageLayout = ImageLayout.None;
+            txtIngreseRNC.BeepOnError = false;
+            txtIngreseRNC.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtIngreseRNC.Depth = 0;
+            txtIngreseRNC.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtIngreseRNC.HidePromptOnLeave = false;
+            txtIngreseRNC.HideSelection = true;
+            txtIngreseRNC.InsertKeyMode = InsertKeyMode.Default;
+            txtIngreseRNC.LeadingIcon = null;
+            txtIngreseRNC.Location = new Point(84, 150);
+            txtIngreseRNC.Mask = "";
+            txtIngreseRNC.MaxLength = 32767;
+            txtIngreseRNC.MouseState = MaterialSkin.MouseState.OUT;
+            txtIngreseRNC.Name = "txtIngreseRNC";
+            txtIngreseRNC.PasswordChar = '\0';
+            txtIngreseRNC.PrefixSuffixText = null;
+            txtIngreseRNC.PromptChar = '_';
+            txtIngreseRNC.ReadOnly = false;
+            txtIngreseRNC.RejectInputOnFirstFailure = false;
+            txtIngreseRNC.ResetOnPrompt = true;
+            txtIngreseRNC.ResetOnSpace = true;
+            txtIngreseRNC.RightToLeft = RightToLeft.No;
+            txtIngreseRNC.SelectedText = "";
+            txtIngreseRNC.SelectionLength = 0;
+            txtIngreseRNC.SelectionStart = 0;
+            txtIngreseRNC.ShortcutsEnabled = true;
+            txtIngreseRNC.Size = new Size(213, 48);
+            txtIngreseRNC.SkipLiterals = true;
+            txtIngreseRNC.TabIndex = 9;
+            txtIngreseRNC.TabStop = false;
+            txtIngreseRNC.TextAlign = HorizontalAlignment.Left;
+            txtIngreseRNC.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtIngreseRNC.TrailingIcon = null;
+            txtIngreseRNC.UseSystemPasswordChar = false;
+            txtIngreseRNC.ValidatingType = null;
+            // 
+            // txtIngreseNombreCliente
+            // 
+            txtIngreseNombreCliente.AllowPromptAsInput = true;
+            txtIngreseNombreCliente.AnimateReadOnly = false;
+            txtIngreseNombreCliente.AsciiOnly = false;
+            txtIngreseNombreCliente.BackgroundImageLayout = ImageLayout.None;
+            txtIngreseNombreCliente.BeepOnError = false;
+            txtIngreseNombreCliente.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtIngreseNombreCliente.Depth = 0;
+            txtIngreseNombreCliente.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtIngreseNombreCliente.HidePromptOnLeave = false;
+            txtIngreseNombreCliente.HideSelection = true;
+            txtIngreseNombreCliente.InsertKeyMode = InsertKeyMode.Default;
+            txtIngreseNombreCliente.LeadingIcon = null;
+            txtIngreseNombreCliente.Location = new Point(84, 76);
+            txtIngreseNombreCliente.Mask = "";
+            txtIngreseNombreCliente.MaxLength = 32767;
+            txtIngreseNombreCliente.MouseState = MaterialSkin.MouseState.OUT;
+            txtIngreseNombreCliente.Name = "txtIngreseNombreCliente";
+            txtIngreseNombreCliente.PasswordChar = '\0';
+            txtIngreseNombreCliente.PrefixSuffixText = null;
+            txtIngreseNombreCliente.PromptChar = '_';
+            txtIngreseNombreCliente.ReadOnly = false;
+            txtIngreseNombreCliente.RejectInputOnFirstFailure = false;
+            txtIngreseNombreCliente.ResetOnPrompt = true;
+            txtIngreseNombreCliente.ResetOnSpace = true;
+            txtIngreseNombreCliente.RightToLeft = RightToLeft.No;
+            txtIngreseNombreCliente.SelectedText = "";
+            txtIngreseNombreCliente.SelectionLength = 0;
+            txtIngreseNombreCliente.SelectionStart = 0;
+            txtIngreseNombreCliente.ShortcutsEnabled = true;
+            txtIngreseNombreCliente.Size = new Size(213, 48);
+            txtIngreseNombreCliente.SkipLiterals = true;
+            txtIngreseNombreCliente.TabIndex = 8;
+            txtIngreseNombreCliente.TabStop = false;
+            txtIngreseNombreCliente.TextAlign = HorizontalAlignment.Left;
+            txtIngreseNombreCliente.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtIngreseNombreCliente.TrailingIcon = null;
+            txtIngreseNombreCliente.UseSystemPasswordChar = false;
+            txtIngreseNombreCliente.ValidatingType = null;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(56, 27);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(220, 19);
+            materialLabel1.TabIndex = 7;
+            materialLabel1.Text = "INGRESE DATOS DEL CLIENTE";
+            // 
+            // lblIngreseNombre
+            // 
+            lblIngreseNombre.AutoSize = true;
+            lblIngreseNombre.Depth = 0;
+            lblIngreseNombre.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblIngreseNombre.Location = new Point(17, 92);
+            lblIngreseNombre.MouseState = MaterialSkin.MouseState.HOVER;
+            lblIngreseNombre.Name = "lblIngreseNombre";
+            lblIngreseNombre.Size = new Size(61, 19);
+            lblIngreseNombre.TabIndex = 4;
+            lblIngreseNombre.Text = "Nombre:";
+            // 
+            // lblIngreseTipoCliente
+            // 
+            lblIngreseTipoCliente.AutoSize = true;
+            lblIngreseTipoCliente.Depth = 0;
+            lblIngreseTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblIngreseTipoCliente.Location = new Point(17, 239);
+            lblIngreseTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            lblIngreseTipoCliente.Name = "lblIngreseTipoCliente";
+            lblIngreseTipoCliente.Size = new Size(110, 19);
+            lblIngreseTipoCliente.TabIndex = 5;
+            lblIngreseTipoCliente.Text = "Tipo de Cliente:";
+            // 
+            // lblIngreseRNC
+            // 
+            lblIngreseRNC.AutoSize = true;
+            lblIngreseRNC.Depth = 0;
+            lblIngreseRNC.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblIngreseRNC.Location = new Point(17, 165);
+            lblIngreseRNC.MouseState = MaterialSkin.MouseState.HOVER;
+            lblIngreseRNC.Name = "lblIngreseRNC";
+            lblIngreseRNC.Size = new Size(36, 19);
+            lblIngreseRNC.TabIndex = 6;
+            lblIngreseRNC.Text = "RNC:";
+            // 
+            // lblClientesRegistrados
+            // 
+            lblClientesRegistrados.AutoSize = true;
+            lblClientesRegistrados.Depth = 0;
+            lblClientesRegistrados.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lblClientesRegistrados.Location = new Point(541, 76);
+            lblClientesRegistrados.MouseState = MaterialSkin.MouseState.HOVER;
+            lblClientesRegistrados.Name = "lblClientesRegistrados";
+            lblClientesRegistrados.Size = new Size(137, 19);
+            lblClientesRegistrados.TabIndex = 3;
+            lblClientesRegistrados.Text = "Clientes Agregados";
+            // 
+            // dataGridView5
+            // 
+            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView5.Location = new Point(350, 103);
+            dataGridView5.Name = "dataGridView5";
+            dataGridView5.Size = new Size(510, 300);
+            dataGridView5.TabIndex = 2;
+            // 
+            // btnBuscarCliente
+            // 
+            btnBuscarCliente.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnBuscarCliente.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnBuscarCliente.Depth = 0;
+            btnBuscarCliente.HighEmphasis = true;
+            btnBuscarCliente.Icon = null;
+            btnBuscarCliente.Location = new Point(209, 12);
+            btnBuscarCliente.Margin = new Padding(4, 6, 4, 6);
+            btnBuscarCliente.MouseState = MaterialSkin.MouseState.HOVER;
+            btnBuscarCliente.Name = "btnBuscarCliente";
+            btnBuscarCliente.NoAccentTextColor = Color.Empty;
+            btnBuscarCliente.Size = new Size(77, 36);
+            btnBuscarCliente.TabIndex = 1;
+            btnBuscarCliente.Text = "Buscar";
+            btnBuscarCliente.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnBuscarCliente.UseAccentColor = false;
+            btnBuscarCliente.UseVisualStyleBackColor = true;
+            // 
+            // txtRncCliente
+            // 
+            txtRncCliente.AllowPromptAsInput = true;
+            txtRncCliente.AnimateReadOnly = false;
+            txtRncCliente.AsciiOnly = false;
+            txtRncCliente.BackgroundImageLayout = ImageLayout.None;
+            txtRncCliente.BeepOnError = false;
+            txtRncCliente.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtRncCliente.Depth = 0;
+            txtRncCliente.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtRncCliente.HidePromptOnLeave = false;
+            txtRncCliente.HideSelection = true;
+            txtRncCliente.InsertKeyMode = InsertKeyMode.Default;
+            txtRncCliente.LeadingIcon = null;
+            txtRncCliente.Location = new Point(3, 6);
+            txtRncCliente.Mask = "";
+            txtRncCliente.MaxLength = 32767;
+            txtRncCliente.MouseState = MaterialSkin.MouseState.OUT;
+            txtRncCliente.Name = "txtRncCliente";
+            txtRncCliente.PasswordChar = '\0';
+            txtRncCliente.PrefixSuffixText = null;
+            txtRncCliente.PromptChar = '_';
+            txtRncCliente.ReadOnly = false;
+            txtRncCliente.RejectInputOnFirstFailure = false;
+            txtRncCliente.ResetOnPrompt = true;
+            txtRncCliente.ResetOnSpace = true;
+            txtRncCliente.RightToLeft = RightToLeft.No;
+            txtRncCliente.SelectedText = "";
+            txtRncCliente.SelectionLength = 0;
+            txtRncCliente.SelectionStart = 0;
+            txtRncCliente.ShortcutsEnabled = true;
+            txtRncCliente.Size = new Size(199, 48);
+            txtRncCliente.SkipLiterals = true;
+            txtRncCliente.TabIndex = 0;
+            txtRncCliente.TabStop = false;
+            txtRncCliente.Text = "Ingrese RNC del Cliente";
+            txtRncCliente.TextAlign = HorizontalAlignment.Left;
+            txtRncCliente.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtRncCliente.TrailingIcon = null;
+            txtRncCliente.UseSystemPasswordChar = false;
+            txtRncCliente.ValidatingType = null;
+            txtRncCliente.Enter += txtRncCliente_Enter;
+            txtRncCliente.Leave += txtRncCliente_Leave;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -943,6 +1272,11 @@
             materialCard3.ResumeLayout(false);
             materialCard3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReporteVentas).EndInit();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
+            materialCard1.ResumeLayout(false);
+            materialCard1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
             ResumeLayout(false);
         }
 
@@ -955,7 +1289,7 @@
         private TabPage tabPage4;
         private DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtBuscarProducto;
-        private MaterialSkin.Controls.MaterialButton btnBuscar;
+        private MaterialSkin.Controls.MaterialButton btnBuscarProducto;
         private DataGridView dataGridView2;
         private MaterialSkin.Controls.MaterialLabel lblProductoStockMinimo;
         private DataGridView dataGridView4;
@@ -1005,5 +1339,20 @@
         private MaterialSkin.Controls.MaterialLabel lblInventario;
         private MaterialSkin.Controls.MaterialComboBox cmbTipoCliente;
         private MaterialSkin.Controls.MaterialLabel lblTipoCliente;
+        private TabPage tabPage5;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtRncCliente;
+        private MaterialSkin.Controls.MaterialButton btnBuscarCliente;
+        private MaterialSkin.Controls.MaterialLabel lblClientesRegistrados;
+        private DataGridView dataGridView5;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
+        private MaterialSkin.Controls.MaterialLabel lblIngreseNombre;
+        private MaterialSkin.Controls.MaterialLabel lblIngreseTipoCliente;
+        private MaterialSkin.Controls.MaterialLabel lblIngreseRNC;
+        private MaterialSkin.Controls.MaterialComboBox cmbIngreseTipoCliente;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtIngreseRNC;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtIngreseNombreCliente;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialButton btnQuitarCliente;
+        private MaterialSkin.Controls.MaterialButton btnIngreseCliente;
     }
 }
