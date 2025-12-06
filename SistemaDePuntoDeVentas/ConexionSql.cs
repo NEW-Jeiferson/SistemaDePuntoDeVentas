@@ -6,7 +6,7 @@ namespace CapaDatos
     {
         //TODO: Cadena de conexión a la base de datos
         //TODO: El static permite que la cadena de conexión sea compartida entre todas las instancias de la clase sin usar new
-        private static string conexion = "Server=.;Database=SistemaPuntoDeVentas; Integrated Security=true; trustServerCertificate=True;";
+        private static string conexion = "Server=.;Database=SistemaDePuntoDeVentaParaColmado; Integrated Security=true; trustServerCertificate=True;";
 
         //TODO: Método público que devuelve una conexión lista para usar
         public static SqlConnection ObtenerConexion()
