@@ -19,7 +19,7 @@ namespace CapaPresentacion
 
             // --- CONFIGURACIÓN CON COLORES VERDES ---
             materialSkinManager.ColorScheme = new MaterialSkin.ColorScheme(
-                MaterialSkin.Primary.Green700,  
+                MaterialSkin.Primary.Green700,
                 MaterialSkin.Primary.Green900,
                 MaterialSkin.Primary.Green500,
                 MaterialSkin.Accent.LightGreen200,
@@ -65,5 +65,22 @@ namespace CapaPresentacion
             }
         }
 
+        private void txtRncCliente_Enter(object sender, EventArgs e)
+        {
+            if (txtRncCliente.Text == "Ingrese RNC del Cliente")
+            {
+                txtRncCliente.Text = "";
+                txtRncCliente.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtRncCliente_Leave(object sender, EventArgs e)
+        {
+            if (txtRncCliente.Text == "")
+            {
+                txtRncCliente.Text = "Ingrese RNC del Cliente";
+                txtRncCliente.ForeColor = Color.LightGray;
+            }
+        }
     }
 }
