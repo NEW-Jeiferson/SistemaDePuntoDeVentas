@@ -339,7 +339,6 @@
             cmbMetodoPago.FormattingEnabled = true;
             cmbMetodoPago.IntegralHeight = false;
             cmbMetodoPago.ItemHeight = 43;
-            cmbMetodoPago.Items.AddRange(new object[] { "Efectivo", "Tarjeta", "Transferencia" });
             cmbMetodoPago.Location = new Point(169, 435);
             cmbMetodoPago.MaxDropDownItems = 4;
             cmbMetodoPago.MouseState = MaterialSkin.MouseState.OUT;

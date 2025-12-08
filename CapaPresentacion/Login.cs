@@ -97,7 +97,8 @@ namespace CapaPresentacion
             string contrasena = txtPassword.Text.Trim();
 
             //TODO: Validar que los campos no estén vacíos
-            if (usuario == "" || contrasena == "")
+            if (usuario == "" || contrasena == "" ||
+                usuario == "Usuario" || contrasena == "Password")
             {
                 MessageBox.Show("Debe completar usuario y contraseña.",
                                 "Campos incompletos",
@@ -115,27 +116,28 @@ namespace CapaPresentacion
             //TODO: Mostrar mensaje según el resultado de la validación
             if (valido)
             {
-                
                 MessageBox.Show("Bienvenido " + usuario,
                                 "Acceso concedido",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
 
                 
-                FormMenuPrincipal menu = new FormMenuPrincipal();
+                FormMenuPrincipal menu = new FormMenuPrincipal(1, usuario);
                 menu.Show();
 
                 this.Hide();
             }
             else
             {
-               
                 MessageBox.Show("Usuario o contraseña incorrectos.",
                                 "Acceso denegado",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
 
                 txtPassword.Clear();
+                txtPassword.Text = "Password";
+                txtPassword.ForeColor = Color.DimGray;
+                txtPassword.UseSystemPasswordChar = false;
                 txtPassword.Focus();
             }
         }
