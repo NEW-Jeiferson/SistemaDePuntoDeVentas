@@ -105,8 +105,9 @@ namespace CapaNegocios.Servicios
                     productosActualizados.Add((item.Producto.ProductoID, item.Cantidad));
                 }
 
-                //TODO: Guardar venta en base de datos
-                int ventaId = await ventaRepo.GuardarVentaAsync(venta);
+                //TODO: Guardar venta en base de datos con el clienteID si existe
+                int clienteID = cliente?.ClienteID ?? 0;
+                int ventaId = await ventaRepo.GuardarVentaAsync(venta, clienteID > 0 ? clienteID : (int?)null);
                 venta.VentaID = ventaId;
 
                 //TODO: Disparar evento VentaCompletada
@@ -154,7 +155,7 @@ namespace CapaNegocios.Servicios
         }
 
         //TODO: Obtener ventas del día
-        public async Task<List<Ventas>> ObtenerVentasDelDiaAsync(DateTime fecha)
+        public async Task<List<VentaRepositorio.VentaReporteDto>> ObtenerVentasDelDiaAsync(DateTime fecha)
         {
             return await ventaRepo.ObtenerVentasPorFechaAsync(fecha);
         }

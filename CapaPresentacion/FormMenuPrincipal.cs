@@ -130,6 +130,7 @@ namespace CapaPresentacion
             btnQuitarProducto.Click += BtnQuitarProducto_Click;
             btnValidarVenta.Click += BtnProcesarVenta_Click;
             btnCancelarVenta.Click += BtnCancelarVenta_Click;
+            btnAgregarClienteAlCarrito.Click += BtnAgregarClienteAlCarrito_Click;
 
             //TODO: TABPAGE REPORTES
             btnReporte.Click += BtnCargarReporte_Click;
@@ -218,16 +219,44 @@ namespace CapaPresentacion
         {
             try
             {
-                string nombre = txtBuscarProducto.Text.Trim();
+                //TODO: Obtener texto de busqueda
+                string busqueda = txtBuscarProducto.Text.Trim();
 
-                if (string.IsNullOrEmpty(nombre) || nombre == "Buscar Producto")
+                if (string.IsNullOrEmpty(busqueda) || busqueda == "Buscar Producto")
                 {
                     await CargarInventarioEnGrid();
                     return;
                 }
 
-                var productos = await inventarioService.BuscarPorNombreAsync(nombre);
-                dataGridView1.DataSource = productos;
+                //TODO: Buscar por nombre primero
+                var productosPorNombre = await inventarioService.BuscarPorNombreAsync(busqueda);
+
+                //TODO: Luego buscar por codigo y agregar si no esta en la lista
+                try
+                {
+                    var productoPorCodigo = await inventarioService.BuscarPorCodigoAsync(busqueda);
+                    if (productoPorCodigo != null)
+                    {
+                        //TODO: Si ya existe en la lista, no lo agregamos
+                        if (!productosPorNombre.Any(p => p.ProductoID == productoPorCodigo.ProductoID))
+                        {
+                            productosPorNombre.Insert(0, productoPorCodigo);
+                        }
+                    }
+                }
+                catch (CodigoInvalidoException)
+                {
+                    //TODO: No hacer nada si el codigo es invalido
+                }
+
+                //TODO: Mostrar mensaje si no se encontraron productos
+                if (productosPorNombre.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron productos", "Busqueda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                dataGridView1.DataSource = productosPorNombre;
             }
             catch (Exception ex)
             {
@@ -308,6 +337,64 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //TODO: Boton agregar cliente al carrito
+        private async void BtnAgregarClienteAlCarrito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rnc = txtRNCdeClienteParaCarrito.Text.Trim();
+
+                if (string.IsNullOrEmpty(rnc))
+                {
+                    MessageBox.Show("Ingrese el RNC del cliente", "Validacion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                //TODO: Buscar cliente por RNC en el repositorio de clientes para conectar a la venta
+                var cliente = await clienteRepo.BuscarPorRNCAsync(rnc);
+
+                if (cliente != null)
+                {
+                    clienteActual = cliente;
+                    ventaActual.Cliente = cliente.Nombre;
+
+                    MessageBox.Show(
+                        $"Cliente agregado a la venta:\n\n" +
+                        $"Nombre: {cliente.Nombre}\n" +
+                        $"RNC: {cliente.RNC}\n" +
+                        $"Tipo: {cliente.TipoCliente}\n" +
+                        $"Descuento: {cliente.PorcentajeDescuento:P0}",
+                        "Cliente Agregado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    //TODO: Actualizar combo de tipo de cliente
+                    cmbTipoCliente.SelectedItem = cliente.TipoCliente;
+
+                    lblEstadoCargando.Text = $"Cliente: {cliente.Nombre} ({cliente.TipoCliente})";
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Cliente no encontrado.\n\n¿Desea registrarlo?",
+                        "Cliente No Encontrado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    clienteActual = null;
+                    ventaActual.Cliente = "Cliente General";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar cliente: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -533,11 +620,17 @@ namespace CapaPresentacion
                 lblITBISFinal.Text = ((decimal)estadisticas["ITBISGeneral"]).AFormatoDominicano();
                 lblTotalGeneralFinal.Text = ((decimal)estadisticas["TotalGeneral"]).AFormatoDominicano();
 
+                //TODO: Cargar ventas en DataGridView
                 dgvReporteVentas.DataSource = ventas.Select(v => new
                 {
                     VentaID = v.VentaID,
                     Fecha = v.Fecha,
+                    Cliente = v.NombreCliente,
+                    TipoCliente = v.TipoCliente,
                     MetodoPago = v.MetodoPago,
+                    Subtotal = v.Subtotal,
+                    ITBIS = v.ITBIS,
+                    Descuento = v.Descuento,
                     Total = v.Total
                 }).ToList();
 
