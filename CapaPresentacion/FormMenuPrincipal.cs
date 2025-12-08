@@ -47,7 +47,7 @@ namespace CapaPresentacion
         /// COMO ESTA VAINA ESTA ECHA EN TAB CONTROLS Y NO POR DIFERENTES FORM LO QUE HARE SERA PONER REGIONES
         /// PARA CADA CONFIGURACION INICIAL DE CADA TAB Y ASI TENERLO MAS ORDENADO Y UNO NO SE PIERDA COMO ZORO
         /// </summary>
-        
+
         #region Configuracion Incial
         //TODO: Configurar Material Skin
         private void ConfigurarMaterialSkin()
@@ -752,5 +752,23 @@ namespace CapaPresentacion
             }
         }
         #endregion
+
+        private void txtRNCdeClienteParaCarrito_Enter(object sender, EventArgs e)
+        {
+            if (txtRNCdeClienteParaCarrito.Text == "Ingrese RNC del Cliente")
+            {
+                txtRNCdeClienteParaCarrito.Text = "";
+                txtRNCdeClienteParaCarrito.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtRNCdeClienteParaCarrito_Leave(object sender, EventArgs e)
+        {
+            if (txtRNCdeClienteParaCarrito.Text == "")
+            {
+                txtRNCdeClienteParaCarrito.Text = "Ingrese RNC del Cliente";
+                txtRNCdeClienteParaCarrito.ForeColor = Color.LightGray;
+            }
+        }
     }
 }

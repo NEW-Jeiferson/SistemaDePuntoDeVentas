@@ -39,6 +39,8 @@
             dataGridView2 = new DataGridView();
             dataGridView1 = new DataGridView();
             tabPageCarrito = new TabPage();
+            btnAgregarClienteAlCarrito = new MaterialSkin.Controls.MaterialButton();
+            txtRNCdeClienteParaCarrito = new MaterialSkin.Controls.MaterialMaskedTextBox();
             cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
             lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
             cmbMetodoPago = new MaterialSkin.Controls.MaterialComboBox();
@@ -266,6 +268,8 @@
             // 
             // tabPageCarrito
             // 
+            tabPageCarrito.Controls.Add(btnAgregarClienteAlCarrito);
+            tabPageCarrito.Controls.Add(txtRNCdeClienteParaCarrito);
             tabPageCarrito.Controls.Add(cmbTipoCliente);
             tabPageCarrito.Controls.Add(lblTipoCliente);
             tabPageCarrito.Controls.Add(cmbMetodoPago);
@@ -291,6 +295,69 @@
             tabPageCarrito.Text = "Carrito";
             tabPageCarrito.UseVisualStyleBackColor = true;
             // 
+            // btnAgregarClienteAlCarrito
+            // 
+            btnAgregarClienteAlCarrito.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAgregarClienteAlCarrito.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAgregarClienteAlCarrito.Depth = 0;
+            btnAgregarClienteAlCarrito.HighEmphasis = true;
+            btnAgregarClienteAlCarrito.Icon = null;
+            btnAgregarClienteAlCarrito.Location = new Point(247, 362);
+            btnAgregarClienteAlCarrito.Margin = new Padding(4, 6, 4, 6);
+            btnAgregarClienteAlCarrito.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAgregarClienteAlCarrito.Name = "btnAgregarClienteAlCarrito";
+            btnAgregarClienteAlCarrito.NoAccentTextColor = Color.Empty;
+            btnAgregarClienteAlCarrito.Size = new Size(77, 36);
+            btnAgregarClienteAlCarrito.TabIndex = 22;
+            btnAgregarClienteAlCarrito.Text = "Buscar";
+            btnAgregarClienteAlCarrito.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAgregarClienteAlCarrito.UseAccentColor = false;
+            btnAgregarClienteAlCarrito.UseVisualStyleBackColor = true;
+            // 
+            // txtRNCdeClienteParaCarrito
+            // 
+            txtRNCdeClienteParaCarrito.AllowPromptAsInput = true;
+            txtRNCdeClienteParaCarrito.AnimateReadOnly = false;
+            txtRNCdeClienteParaCarrito.AsciiOnly = false;
+            txtRNCdeClienteParaCarrito.BackgroundImageLayout = ImageLayout.None;
+            txtRNCdeClienteParaCarrito.BeepOnError = false;
+            txtRNCdeClienteParaCarrito.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtRNCdeClienteParaCarrito.Depth = 0;
+            txtRNCdeClienteParaCarrito.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtRNCdeClienteParaCarrito.HidePromptOnLeave = false;
+            txtRNCdeClienteParaCarrito.HideSelection = true;
+            txtRNCdeClienteParaCarrito.InsertKeyMode = InsertKeyMode.Default;
+            txtRNCdeClienteParaCarrito.LeadingIcon = null;
+            txtRNCdeClienteParaCarrito.Location = new Point(31, 355);
+            txtRNCdeClienteParaCarrito.Mask = "";
+            txtRNCdeClienteParaCarrito.MaxLength = 32767;
+            txtRNCdeClienteParaCarrito.MouseState = MaterialSkin.MouseState.OUT;
+            txtRNCdeClienteParaCarrito.Name = "txtRNCdeClienteParaCarrito";
+            txtRNCdeClienteParaCarrito.PasswordChar = '\0';
+            txtRNCdeClienteParaCarrito.PrefixSuffixText = null;
+            txtRNCdeClienteParaCarrito.PromptChar = '_';
+            txtRNCdeClienteParaCarrito.ReadOnly = false;
+            txtRNCdeClienteParaCarrito.RejectInputOnFirstFailure = false;
+            txtRNCdeClienteParaCarrito.ResetOnPrompt = true;
+            txtRNCdeClienteParaCarrito.ResetOnSpace = true;
+            txtRNCdeClienteParaCarrito.RightToLeft = RightToLeft.No;
+            txtRNCdeClienteParaCarrito.SelectedText = "";
+            txtRNCdeClienteParaCarrito.SelectionLength = 0;
+            txtRNCdeClienteParaCarrito.SelectionStart = 0;
+            txtRNCdeClienteParaCarrito.ShortcutsEnabled = true;
+            txtRNCdeClienteParaCarrito.Size = new Size(201, 48);
+            txtRNCdeClienteParaCarrito.SkipLiterals = true;
+            txtRNCdeClienteParaCarrito.TabIndex = 21;
+            txtRNCdeClienteParaCarrito.TabStop = false;
+            txtRNCdeClienteParaCarrito.Text = "Ingrese RNC del Cliente";
+            txtRNCdeClienteParaCarrito.TextAlign = HorizontalAlignment.Left;
+            txtRNCdeClienteParaCarrito.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtRNCdeClienteParaCarrito.TrailingIcon = null;
+            txtRNCdeClienteParaCarrito.UseSystemPasswordChar = false;
+            txtRNCdeClienteParaCarrito.ValidatingType = null;
+            txtRNCdeClienteParaCarrito.Enter += txtRNCdeClienteParaCarrito_Enter;
+            txtRNCdeClienteParaCarrito.Leave += txtRNCdeClienteParaCarrito_Leave;
+            // 
             // cmbTipoCliente
             // 
             cmbTipoCliente.AutoResize = false;
@@ -305,7 +372,7 @@
             cmbTipoCliente.FormattingEnabled = true;
             cmbTipoCliente.IntegralHeight = false;
             cmbTipoCliente.ItemHeight = 43;
-            cmbTipoCliente.Location = new Point(685, 281);
+            cmbTipoCliente.Location = new Point(154, 431);
             cmbTipoCliente.MaxDropDownItems = 4;
             cmbTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
             cmbTipoCliente.Name = "cmbTipoCliente";
@@ -318,7 +385,7 @@
             lblTipoCliente.AutoSize = true;
             lblTipoCliente.Depth = 0;
             lblTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblTipoCliente.Location = new Point(554, 294);
+            lblTipoCliente.Location = new Point(31, 448);
             lblTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
             lblTipoCliente.Name = "lblTipoCliente";
             lblTipoCliente.Size = new Size(106, 19);
@@ -339,7 +406,7 @@
             cmbMetodoPago.FormattingEnabled = true;
             cmbMetodoPago.IntegralHeight = false;
             cmbMetodoPago.ItemHeight = 43;
-            cmbMetodoPago.Location = new Point(169, 435);
+            cmbMetodoPago.Location = new Point(685, 281);
             cmbMetodoPago.MaxDropDownItems = 4;
             cmbMetodoPago.MouseState = MaterialSkin.MouseState.OUT;
             cmbMetodoPago.Name = "cmbMetodoPago";
@@ -352,7 +419,7 @@
             lblMetodoPago.AutoSize = true;
             lblMetodoPago.Depth = 0;
             lblMetodoPago.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblMetodoPago.Location = new Point(31, 451);
+            lblMetodoPago.Location = new Point(554, 294);
             lblMetodoPago.MouseState = MaterialSkin.MouseState.HOVER;
             lblMetodoPago.Name = "lblMetodoPago";
             lblMetodoPago.Size = new Size(117, 19);
@@ -364,7 +431,7 @@
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Location = new Point(31, 45);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(400, 230);
+            dataGridView3.Size = new Size(400, 140);
             dataGridView3.TabIndex = 16;
             // 
             // btnValidarVenta
@@ -520,7 +587,7 @@
             lblCantidad.AutoSize = true;
             lblCantidad.Depth = 0;
             lblCantidad.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblCantidad.Location = new Point(32, 390);
+            lblCantidad.Location = new Point(31, 294);
             lblCantidad.MouseState = MaterialSkin.MouseState.HOVER;
             lblCantidad.Name = "lblCantidad";
             lblCantidad.Size = new Size(65, 19);
@@ -529,7 +596,7 @@
             // 
             // nmrCantidadProducto
             // 
-            nmrCantidadProducto.Location = new Point(121, 389);
+            nmrCantidadProducto.Location = new Point(112, 290);
             nmrCantidadProducto.Name = "nmrCantidadProducto";
             nmrCantidadProducto.Size = new Size(120, 23);
             nmrCantidadProducto.TabIndex = 9;
@@ -541,7 +608,7 @@
             btnAgregarAlCarrito.Depth = 0;
             btnAgregarAlCarrito.HighEmphasis = true;
             btnAgregarAlCarrito.Icon = null;
-            btnAgregarAlCarrito.Location = new Point(258, 380);
+            btnAgregarAlCarrito.Location = new Point(258, 284);
             btnAgregarAlCarrito.Margin = new Padding(4, 6, 4, 6);
             btnAgregarAlCarrito.MouseState = MaterialSkin.MouseState.HOVER;
             btnAgregarAlCarrito.Name = "btnAgregarAlCarrito";
@@ -591,7 +658,7 @@
             txtBuscarPorCodigo.HideSelection = true;
             txtBuscarPorCodigo.InsertKeyMode = InsertKeyMode.Default;
             txtBuscarPorCodigo.LeadingIcon = null;
-            txtBuscarPorCodigo.Location = new Point(31, 291);
+            txtBuscarPorCodigo.Location = new Point(31, 211);
             txtBuscarPorCodigo.Mask = "";
             txtBuscarPorCodigo.MaxLength = 32767;
             txtBuscarPorCodigo.MouseState = MaterialSkin.MouseState.OUT;
@@ -636,7 +703,7 @@
             btnCodigoProducto.Depth = 0;
             btnCodigoProducto.HighEmphasis = true;
             btnCodigoProducto.Icon = null;
-            btnCodigoProducto.Location = new Point(202, 299);
+            btnCodigoProducto.Location = new Point(200, 220);
             btnCodigoProducto.Margin = new Padding(4, 6, 4, 6);
             btnCodigoProducto.MouseState = MaterialSkin.MouseState.HOVER;
             btnCodigoProducto.Name = "btnCodigoProducto";
@@ -1353,5 +1420,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialButton btnQuitarCliente;
         private MaterialSkin.Controls.MaterialButton btnIngreseCliente;
+        private MaterialSkin.Controls.MaterialButton btnAgregarClienteAlCarrito;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtRNCdeClienteParaCarrito;
     }
 }
