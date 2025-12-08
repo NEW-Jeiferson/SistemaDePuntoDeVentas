@@ -9,6 +9,20 @@ using Microsoft.Data.SqlClient;
 
 namespace CapaNegocios.Repositorios
 {
+    //TODO: Esta clase es para mapear los datos del reporte de ventas por fecha ya que estuve teniendo problemas si lo hacia directamente con la entidad Ventas
+    public class VentaReporteDto
+    {
+        public int VentaID { get; set; }
+        public DateTime Fecha { get; set; }
+        public string MetodoPago { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal ITBIS { get; set; }
+        public decimal Descuento { get; set; }
+        public decimal Total { get; set; }
+        public string NombreCliente { get; set; }
+        public string TipoCliente { get; set; }
+    }
+
     public class VentaRepositorio
     {
         //TODO: Guardar venta completa con sus detalles
@@ -78,20 +92,6 @@ namespace CapaNegocios.Repositorios
             }
         }
 
-        //TODO: Esta clase es para mapear los datos del reporte de ventas por fecha ya que estuve teniendo problemas si lo hacia directamente con la entidad Ventas
-        public class VentaReporteDto
-        {
-            public int VentaID { get; set; }
-            public DateTime Fecha { get; set; }
-            public string MetodoPago { get; set; }
-            public decimal Subtotal { get; set; }
-            public decimal ITBIS { get; set; }
-            public decimal Descuento { get; set; }
-            public decimal Total { get; set; }
-            public string NombreCliente { get; set; }
-            public string TipoCliente { get; set; }
-        }
-
         //TODO: Obtener ventas por fecha, esto para implementarlo en form reporte de ventas
         public async Task<List<VentaReporteDto>> ObtenerVentasPorFechaAsync(DateTime fecha)
         {
@@ -101,21 +101,22 @@ namespace CapaNegocios.Repositorios
             {
                 await conexion.OpenAsync();
 
-                string query = @"SELECT
-                    v.VentaID,
-                    v.FechaVenta,
-                    v.MetodoPago,
-                    v.Subtotal,
-                    v.ITBIS,
-                    v.Descuento,
-                    v.Total,
-                    ISNULL(c.Nombre, 'Cliente General') AS NombreCliente,
-                    ISNULL(c.TipoCliente, 'General') AS TipoCliente
-                    FROM Ventas v
-                    LEFT JOIN Clientes c ON v.ClienteID = c.ClienteID
-                    WHERE CAST(v.FechaVenta AS DATE) = CAST(@Fecha AS DATE)
-                    AND v.Estado = 'Completada'
-                    ORDER BY v.FechaVenta DESC";
+                //TODO: Consulta para obtener ventas con LEFT JOIN a Clientes
+                string query = @"SELECT 
+                  v.VentaID,
+                  v.FechaVenta,
+                  v.MetodoPago,
+                  v.Subtotal,
+                  v.ITBIS,
+                  v.Descuento,
+                  v.Total,
+                  ISNULL(c.Nombre, 'Cliente General') AS NombreCliente,
+                  ISNULL(c.TipoCliente, 'General') AS TipoCliente
+                  FROM Ventas v
+                  LEFT JOIN Clientes c ON v.ClienteID = c.ClienteID
+                  WHERE CAST(v.FechaVenta AS DATE) = CAST(@Fecha AS DATE)
+                  AND v.Estado = 'Completada'
+                  ORDER BY v.FechaVenta DESC";
 
                 using (var comando = new SqlCommand(query, conexion))
                 {

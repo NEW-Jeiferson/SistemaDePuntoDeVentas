@@ -155,7 +155,7 @@ namespace CapaNegocios.Servicios
         }
 
         //TODO: Obtener ventas del día
-        public async Task<List<VentaRepositorio.VentaReporteDto>> ObtenerVentasDelDiaAsync(DateTime fecha)
+        public async Task<List<Repositorios.VentaReporteDto>> ObtenerVentasDelDiaAsync(DateTime fecha)
         {
             return await ventaRepo.ObtenerVentasPorFechaAsync(fecha);
         }

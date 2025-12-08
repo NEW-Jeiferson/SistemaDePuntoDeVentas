@@ -1,4 +1,4 @@
-using MaterialSkin;
+Ôªøusing MaterialSkin;
 using MaterialSkin.Controls;
 using CapaNegocios.Servicios;
 using CapaNegocios.Entidades;
@@ -72,12 +72,7 @@ namespace CapaPresentacion
             cmbMetodoPago.Items.AddRange(new[] { "Efectivo", "Tarjeta", "Transferencia" });
             cmbMetodoPago.SelectedIndex = 0;
 
-            //TODO: ComboBox Tipo de Cliente, el que esta en Carrito
-            cmbTipoCliente.Items.Clear();
-            cmbTipoCliente.Items.AddRange(new[] { "General", "A por mayor" });
-            cmbTipoCliente.SelectedIndex = 0;
-
-            //TODO: ComboBox Tipo de Cliente, el que esta en Registrar Cliente
+            //TODO: ComboBox Tipo de Cliente, el que esta en Registrar Cliente / Esto es en registro cliente
             cmbIngreseTipoCliente.Items.Clear();
             cmbIngreseTipoCliente.Items.AddRange(new[] { "General", "A por mayor" });
             cmbIngreseTipoCliente.SelectedIndex = 0;
@@ -168,9 +163,9 @@ namespace CapaPresentacion
             MessageBox.Show(
                 $"ALERTA DE INVENTARIO BAJO\n\n" +
                 $"Producto: {e.Producto.Nombre}\n" +
-                $"CÛdigo: {e.Producto.Codigo}\n" +
+                $"C√≥digo: {e.Producto.Codigo}\n" +
                 $"Stock actual: {e.StockActual}\n" +
-                $"Stock mÌnimo: {e.StockMinimo}",
+                $"Stock m√≠nimo: {e.StockMinimo}",
                 "Inventario Bajo",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
@@ -315,7 +310,7 @@ namespace CapaPresentacion
 
                 if (string.IsNullOrEmpty(codigo) || codigo == "Ingresa el Codigo")
                 {
-                    MessageBox.Show("Ingrese un cÛdigo de producto", "ValidaciÛn",
+                    MessageBox.Show("Ingrese un c√≥digo de producto", "Validaci√≥n",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -374,15 +369,12 @@ namespace CapaPresentacion
                         MessageBoxIcon.Information
                     );
 
-                    //TODO: Actualizar combo de tipo de cliente
-                    cmbTipoCliente.SelectedItem = cliente.TipoCliente;
-
                     lblEstadoCargando.Text = $"Cliente: {cliente.Nombre} ({cliente.TipoCliente})";
                 }
                 else
                 {
                     MessageBox.Show(
-                        "Cliente no encontrado.\n\nøDesea registrarlo?",
+                        "Cliente no encontrado.\n\n¬øDesea registrarlo?",
                         "Cliente No Encontrado",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
@@ -470,25 +462,34 @@ namespace CapaPresentacion
         {
             try
             {
+                //TODO: Validacion obligatoria de productos en el carrito
                 if (ventaActual.Items.Count == 0)
                 {
-                    MessageBox.Show("El carrito est· vacio", "Validacion",
+                    MessageBox.Show("El carrito esta vac√≠o", "Validacion",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                //TODO: Establecer mÈtodo de pago
-                ventaActual.MetodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
-
-                //TODO: Aplicar cliente y descuento si aplica
-                string tipoCliente = cmbTipoCliente.SelectedItem?.ToString() ?? "General";
-                if (tipoCliente == "A por mayor")
+                //TODO: Validacion obligatoria de cliente en la venta
+                if (clienteActual == null)
                 {
-                    clienteActual = new Cliente { TipoCliente = "A por mayor" };
+                    MessageBox.Show(
+                        "Debe agregar un cliente a la venta.\n\n" +
+                        "Ingrese el RNC del cliente y presione el boton BUSCAR.",
+                        "Cliente Requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
                 }
+
+                //TODO: Establecer metodo de pago
+                ventaActual.MetodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
 
                 //TODO: Solicitar monto pagado
                 string inputMonto = Microsoft.VisualBasic.Interaction.InputBox(
+                    $"Cliente: {clienteActual.Nombre} ({clienteActual.TipoCliente})\n" +
+                    $"Descuento aplicado: {clienteActual.PorcentajeDescuento:P0}\n\n" +
                     $"Total a pagar: {ventaActual.Total.AFormatoDominicano()}\n\n" +
                     $"Ingrese el monto recibido:",
                     "Procesar Pago",
@@ -497,6 +498,7 @@ namespace CapaPresentacion
 
                 if (string.IsNullOrEmpty(inputMonto)) return;
 
+                //TODO: Validar monto pagado
                 if (!decimal.TryParse(inputMonto, out decimal montoPagado))
                 {
                     MessageBox.Show("Monto invalido", "Error",
@@ -504,12 +506,12 @@ namespace CapaPresentacion
                     return;
                 }
 
-                //TODO: Si es tarjeta, validar
+                //TODO: Si es tarjeta, validar (ASYNC REQUERIDO)
                 if (ventaActual.MetodoPago == "Tarjeta")
                 {
                     string numeroTarjeta = Microsoft.VisualBasic.Interaction.InputBox(
-                        "Ingrese los ultimos 4 dÌgitos de la tarjeta:",
-                        "ValidaciÛn de Tarjeta"
+                        "Ingrese los ultimos 4 d√≠gitos de la tarjeta:",
+                        "Validaci√≥n de Tarjeta"
                     );
 
                     if (string.IsNullOrEmpty(numeroTarjeta)) return;
@@ -525,14 +527,14 @@ namespace CapaPresentacion
                         return;
                     }
 
-                    lblEstadoCargando.Text = "Tarjeta aprobada ?";
+                    lblEstadoCargando.Text = "Tarjeta aprobada ‚úì";
                 }
 
-                //TODO: Procesar venta (TRY-CATCH-FINALLY CON ROLLBACK)
+                //TODO: Procesar venta Try-Cacht-finally con Rollback
                 lblEstadoCargando.Text = "Procesando venta...";
                 await ventaService.ProcesarVentaAsync(ventaActual, montoPagado, clienteActual);
 
-                //TODO: El evento VentaCompletada se dispara autom·ticamente
+                //TODO: El evento VentaCompletada se dispara automaticamente
             }
             catch (MontoInsuficienteException ex)
             {
@@ -552,9 +554,9 @@ namespace CapaPresentacion
         private void BtnCancelarVenta_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show(
-                "øEst· seguro de cancelar la venta actual?\n\n" +
-                $"Se perder·n {ventaActual.Items.Count} productos del carrito.",
-                "Confirmar CancelaciÛn",
+                "¬øEst√° seguro de cancelar la venta actual?\n\n" +
+                $"Se perder√°n {ventaActual.Items.Count} productos del carrito.",
+                "Confirmar Cancelaci√≥n",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -563,7 +565,7 @@ namespace CapaPresentacion
             {
                 InicializarNuevaVenta();
                 ActualizarInterfazVenta();
-                MessageBox.Show("Venta cancelada", "InformaciÛn",
+                MessageBox.Show("Venta cancelada", "Informacion",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -575,7 +577,7 @@ namespace CapaPresentacion
             dataGridView4.DataSource = null;
             dataGridView4.DataSource = ventaActual.Items.Select(i => new
             {
-                CÛdigo = i.Producto.Codigo,
+                C√≥digo = i.Producto.Codigo,
                 Producto = i.Producto.Nombre,
                 Cantidad = i.Cantidad,
                 Precio = i.PrecioUnitario,
@@ -604,7 +606,7 @@ namespace CapaPresentacion
                 lblEstadoCargando.Text = "Cargando reporte...";
                 prbProgreso.Value = 0;
 
-                //TODO: Obtener estadÌsticas del dÌa
+                //TODO: Obtener estad√≠sticas del d√≠a
                 var estadisticas = await ventaService.ObtenerEstadisticasDelDiaAsync(fecha);
 
                 prbProgreso.Value = 50;
@@ -624,9 +626,9 @@ namespace CapaPresentacion
                 dgvReporteVentas.DataSource = ventas.Select(v => new
                 {
                     VentaID = v.VentaID,
-                    Fecha = v.Fecha,
-                    Cliente = v.NombreCliente,
-                    TipoCliente = v.TipoCliente,
+                    Fecha = v.Fecha.ToString("dd/MM/yyyy HH:mm"),
+                    Cliente = v.NombreCliente,        
+                    TipoCliente = v.TipoCliente,       
                     MetodoPago = v.MetodoPago,
                     Subtotal = v.Subtotal,
                     ITBIS = v.ITBIS,
@@ -664,7 +666,7 @@ namespace CapaPresentacion
                     $"REPORTE RECALCULADO CON PLINQ\n\n" +
                     $"Total en Efectivo: {reporte["VentasEfectivo"].AFormatoDominicano()}\n" +
                     $"Total General: {reporte["TotalVentas"].AFormatoDominicano()}",
-                    "Rec·lculo Completado",
+                    "Rec√°lculo Completado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -733,7 +735,7 @@ namespace CapaPresentacion
 
                 if (string.IsNullOrEmpty(nombre))
                 {
-                    MessageBox.Show("Ingrese el nombre del cliente", "ValidaciÛn",
+                    MessageBox.Show("Ingrese el nombre del cliente", "Validaci√≥n",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -768,8 +770,8 @@ namespace CapaPresentacion
         //TODO: Boton quitar cliente (NO IMPLEMENTADO POR EL MOMENTO)
         private async void BtnQuitarCliente_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("FunciÛn de eliminar cliente no implementada por seguridad.\n" +
-                "En producciÛn requerirÌa validaciones adicionales.", "InformaciÛn",
+            MessageBox.Show("Funci√≥n de eliminar cliente no implementada por seguridad.\n" +
+                "En producci√≥n requerir√≠a validaciones adicionales.", "Informaci√≥n",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

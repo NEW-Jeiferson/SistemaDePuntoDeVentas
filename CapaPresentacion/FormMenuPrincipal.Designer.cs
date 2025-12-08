@@ -41,8 +41,6 @@
             tabPageCarrito = new TabPage();
             btnAgregarClienteAlCarrito = new MaterialSkin.Controls.MaterialButton();
             txtRNCdeClienteParaCarrito = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
-            lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
             cmbMetodoPago = new MaterialSkin.Controls.MaterialComboBox();
             lblMetodoPago = new MaterialSkin.Controls.MaterialLabel();
             dataGridView3 = new DataGridView();
@@ -270,8 +268,6 @@
             // 
             tabPageCarrito.Controls.Add(btnAgregarClienteAlCarrito);
             tabPageCarrito.Controls.Add(txtRNCdeClienteParaCarrito);
-            tabPageCarrito.Controls.Add(cmbTipoCliente);
-            tabPageCarrito.Controls.Add(lblTipoCliente);
             tabPageCarrito.Controls.Add(cmbMetodoPago);
             tabPageCarrito.Controls.Add(lblMetodoPago);
             tabPageCarrito.Controls.Add(dataGridView3);
@@ -357,40 +353,6 @@
             txtRNCdeClienteParaCarrito.ValidatingType = null;
             txtRNCdeClienteParaCarrito.Enter += txtRNCdeClienteParaCarrito_Enter;
             txtRNCdeClienteParaCarrito.Leave += txtRNCdeClienteParaCarrito_Leave;
-            // 
-            // cmbTipoCliente
-            // 
-            cmbTipoCliente.AutoResize = false;
-            cmbTipoCliente.BackColor = Color.FromArgb(255, 255, 255);
-            cmbTipoCliente.Depth = 0;
-            cmbTipoCliente.DrawMode = DrawMode.OwnerDrawVariable;
-            cmbTipoCliente.DropDownHeight = 174;
-            cmbTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoCliente.DropDownWidth = 121;
-            cmbTipoCliente.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            cmbTipoCliente.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            cmbTipoCliente.FormattingEnabled = true;
-            cmbTipoCliente.IntegralHeight = false;
-            cmbTipoCliente.ItemHeight = 43;
-            cmbTipoCliente.Location = new Point(154, 431);
-            cmbTipoCliente.MaxDropDownItems = 4;
-            cmbTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
-            cmbTipoCliente.Name = "cmbTipoCliente";
-            cmbTipoCliente.Size = new Size(161, 49);
-            cmbTipoCliente.StartIndex = 0;
-            cmbTipoCliente.TabIndex = 20;
-            // 
-            // lblTipoCliente
-            // 
-            lblTipoCliente.AutoSize = true;
-            lblTipoCliente.Depth = 0;
-            lblTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblTipoCliente.Location = new Point(31, 448);
-            lblTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
-            lblTipoCliente.Name = "lblTipoCliente";
-            lblTipoCliente.Size = new Size(106, 19);
-            lblTipoCliente.TabIndex = 19;
-            lblTipoCliente.Text = "Tipo de Cliente";
             // 
             // cmbMetodoPago
             // 
@@ -1403,8 +1365,6 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
-        private MaterialSkin.Controls.MaterialComboBox cmbTipoCliente;
-        private MaterialSkin.Controls.MaterialLabel lblTipoCliente;
         private TabPage tabPageClientes;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtRncCliente;
         private MaterialSkin.Controls.MaterialButton btnBuscarCliente;
