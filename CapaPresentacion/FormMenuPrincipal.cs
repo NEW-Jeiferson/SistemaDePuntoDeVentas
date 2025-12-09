@@ -127,6 +127,10 @@ namespace CapaPresentacion
             btnCancelarVenta.Click += BtnCancelarVenta_Click;
             btnAgregarClienteAlCarrito.Click += BtnAgregarClienteAlCarrito_Click;
 
+            //TODO: Validacion solo numeros en RNC del cliente para el carrito
+            txtRNCdeClienteParaCarrito.KeyPress += SoloNumeros_KeyPress;
+            txtRNCdeClienteParaCarrito.MaxLength = 11;
+
             //TODO: TABPAGE REPORTES
             btnReporte.Click += BtnCargarReporte_Click;
             btnRecarcularPlinq.Click += BtnRecalcularPlinq_Click;
@@ -135,6 +139,16 @@ namespace CapaPresentacion
             btnBuscarCliente.Click += BtnBuscarCliente_Click;
             btnIngreseCliente.Click += BtnRegistrarCliente_Click;
             btnQuitarCliente.Click += BtnQuitarCliente_Click;
+
+            //TODO: Validacion solo numeros en RNC del cliente para registro
+            txtRncCliente.KeyPress += SoloNumeros_KeyPress;
+            txtRncCliente.MaxLength = 11;
+            txtIngreseRNC.KeyPress += SoloNumeros_KeyPress;
+            txtIngreseRNC.MaxLength = 11;
+
+            //TODO: Validacion solo letras en nombre del cliente para registro
+            txtIngreseNombreCliente.KeyPress += SoloLetras_KeyPress;
+            txtIngreseNombreCliente.MaxLength = 100;
 
             //TODO: Configurar NumericUpDown, esto para que no se pase de rango
             nmrCantidadProducto.Minimum = 1;
@@ -733,9 +747,19 @@ namespace CapaPresentacion
                 string rnc = txtIngreseRNC.Text.Trim();
                 string tipoCliente = cmbIngreseTipoCliente.SelectedItem?.ToString() ?? "General";
 
+                //TODO: Validar nombre obligatorio
                 if (string.IsNullOrEmpty(nombre))
                 {
-                    MessageBox.Show("Ingrese el nombre del cliente", "Validación",
+                    MessageBox.Show("Ingrese el nombre del cliente", "Validacion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                //TODO: Validar RNC (11 digitos o vacio)
+                if (!string.IsNullOrEmpty(rnc) && rnc.Length != 11)
+                {
+                    MessageBox.Show("El RNC debe tener solo 11 dígitos",
+                        "RNC Inválido",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -846,7 +870,7 @@ namespace CapaPresentacion
                 txtRncCliente.ForeColor = Color.LightGray;
             }
         }
-        #endregion
+        
 
         private void txtRNCdeClienteParaCarrito_Enter(object sender, EventArgs e)
         {
@@ -865,5 +889,30 @@ namespace CapaPresentacion
                 txtRNCdeClienteParaCarrito.ForeColor = Color.LightGray;
             }
         }
+        #endregion
+
+        #region KEY PRESS VALIDATIONS
+
+        //TODO: Permitir solo numeros en RNC
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //TODO: Permitir solo numeros y teclas de control
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //TODO: Solo letras y espacios en nombres de clientes
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //TODO: Permitir letras, espacios y backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion
     }
 }
