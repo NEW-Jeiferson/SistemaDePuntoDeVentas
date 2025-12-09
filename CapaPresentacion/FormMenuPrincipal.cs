@@ -1,4 +1,4 @@
-using MaterialSkin;
+Ôªøusing MaterialSkin;
 using MaterialSkin.Controls;
 using CapaNegocios.Servicios;
 using CapaNegocios.Entidades;
@@ -47,7 +47,7 @@ namespace CapaPresentacion
         /// COMO ESTA VAINA ESTA ECHA EN TAB CONTROLS Y NO POR DIFERENTES FORM LO QUE HARE SERA PONER REGIONES
         /// PARA CADA CONFIGURACION INICIAL DE CADA TAB Y ASI TENERLO MAS ORDENADO Y UNO NO SE PIERDA COMO ZORO
         /// </summary>
-        
+
         #region Configuracion Incial
         //TODO: Configurar Material Skin
         private void ConfigurarMaterialSkin()
@@ -72,12 +72,7 @@ namespace CapaPresentacion
             cmbMetodoPago.Items.AddRange(new[] { "Efectivo", "Tarjeta", "Transferencia" });
             cmbMetodoPago.SelectedIndex = 0;
 
-            //TODO: ComboBox Tipo de Cliente, el que esta en Carrito
-            cmbTipoCliente.Items.Clear();
-            cmbTipoCliente.Items.AddRange(new[] { "General", "A por mayor" });
-            cmbTipoCliente.SelectedIndex = 0;
-
-            //TODO: ComboBox Tipo de Cliente, el que esta en Registrar Cliente
+            //TODO: ComboBox Tipo de Cliente, el que esta en Registrar Cliente / Esto es en registro cliente
             cmbIngreseTipoCliente.Items.Clear();
             cmbIngreseTipoCliente.Items.AddRange(new[] { "General", "A por mayor" });
             cmbIngreseTipoCliente.SelectedIndex = 0;
@@ -130,6 +125,11 @@ namespace CapaPresentacion
             btnQuitarProducto.Click += BtnQuitarProducto_Click;
             btnValidarVenta.Click += BtnProcesarVenta_Click;
             btnCancelarVenta.Click += BtnCancelarVenta_Click;
+            btnAgregarClienteAlCarrito.Click += BtnAgregarClienteAlCarrito_Click;
+
+            //TODO: Validacion solo numeros en RNC del cliente para el carrito
+            txtRNCdeClienteParaCarrito.KeyPress += SoloNumeros_KeyPress;
+            txtRNCdeClienteParaCarrito.MaxLength = 11;
 
             //TODO: TABPAGE REPORTES
             btnReporte.Click += BtnCargarReporte_Click;
@@ -139,6 +139,16 @@ namespace CapaPresentacion
             btnBuscarCliente.Click += BtnBuscarCliente_Click;
             btnIngreseCliente.Click += BtnRegistrarCliente_Click;
             btnQuitarCliente.Click += BtnQuitarCliente_Click;
+
+            //TODO: Validacion solo numeros en RNC del cliente para registro
+            txtRncCliente.KeyPress += SoloNumeros_KeyPress;
+            txtRncCliente.MaxLength = 11;
+            txtIngreseRNC.KeyPress += SoloNumeros_KeyPress;
+            txtIngreseRNC.MaxLength = 11;
+
+            //TODO: Validacion solo letras en nombre del cliente para registro
+            txtIngreseNombreCliente.KeyPress += SoloLetras_KeyPress;
+            txtIngreseNombreCliente.MaxLength = 100;
 
             //TODO: Configurar NumericUpDown, esto para que no se pase de rango
             nmrCantidadProducto.Minimum = 1;
@@ -167,9 +177,9 @@ namespace CapaPresentacion
             MessageBox.Show(
                 $"ALERTA DE INVENTARIO BAJO\n\n" +
                 $"Producto: {e.Producto.Nombre}\n" +
-                $"CÛdigo: {e.Producto.Codigo}\n" +
+                $"C√≥digo: {e.Producto.Codigo}\n" +
                 $"Stock actual: {e.StockActual}\n" +
-                $"Stock mÌnimo: {e.StockMinimo}",
+                $"Stock m√≠nimo: {e.StockMinimo}",
                 "Inventario Bajo",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
@@ -218,16 +228,44 @@ namespace CapaPresentacion
         {
             try
             {
-                string nombre = txtBuscarProducto.Text.Trim();
+                //TODO: Obtener texto de busqueda
+                string busqueda = txtBuscarProducto.Text.Trim();
 
-                if (string.IsNullOrEmpty(nombre) || nombre == "Buscar Producto")
+                if (string.IsNullOrEmpty(busqueda) || busqueda == "Buscar Producto")
                 {
                     await CargarInventarioEnGrid();
                     return;
                 }
 
-                var productos = await inventarioService.BuscarPorNombreAsync(nombre);
-                dataGridView1.DataSource = productos;
+                //TODO: Buscar por nombre primero
+                var productosPorNombre = await inventarioService.BuscarPorNombreAsync(busqueda);
+
+                //TODO: Luego buscar por codigo y agregar si no esta en la lista
+                try
+                {
+                    var productoPorCodigo = await inventarioService.BuscarPorCodigoAsync(busqueda);
+                    if (productoPorCodigo != null)
+                    {
+                        //TODO: Si ya existe en la lista, no lo agregamos
+                        if (!productosPorNombre.Any(p => p.ProductoID == productoPorCodigo.ProductoID))
+                        {
+                            productosPorNombre.Insert(0, productoPorCodigo);
+                        }
+                    }
+                }
+                catch (CodigoInvalidoException)
+                {
+                    //TODO: No hacer nada si el codigo es invalido
+                }
+
+                //TODO: Mostrar mensaje si no se encontraron productos
+                if (productosPorNombre.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron productos", "Busqueda",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                dataGridView1.DataSource = productosPorNombre;
             }
             catch (Exception ex)
             {
@@ -286,7 +324,7 @@ namespace CapaPresentacion
 
                 if (string.IsNullOrEmpty(codigo) || codigo == "Ingresa el Codigo")
                 {
-                    MessageBox.Show("Ingrese un cÛdigo de producto", "ValidaciÛn",
+                    MessageBox.Show("Ingrese un c√≥digo de producto", "Validaci√≥n",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -308,6 +346,61 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //TODO: Boton agregar cliente al carrito
+        private async void BtnAgregarClienteAlCarrito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rnc = txtRNCdeClienteParaCarrito.Text.Trim();
+
+                if (string.IsNullOrEmpty(rnc))
+                {
+                    MessageBox.Show("Ingrese el RNC del cliente", "Validacion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                //TODO: Buscar cliente por RNC en el repositorio de clientes para conectar a la venta
+                var cliente = await clienteRepo.BuscarPorRNCAsync(rnc);
+
+                if (cliente != null)
+                {
+                    clienteActual = cliente;
+                    ventaActual.Cliente = cliente.Nombre;
+
+                    MessageBox.Show(
+                        $"Cliente agregado a la venta:\n\n" +
+                        $"Nombre: {cliente.Nombre}\n" +
+                        $"RNC: {cliente.RNC}\n" +
+                        $"Tipo: {cliente.TipoCliente}\n" +
+                        $"Descuento: {cliente.PorcentajeDescuento:P0}",
+                        "Cliente Agregado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    lblEstadoCargando.Text = $"Cliente: {cliente.Nombre} ({cliente.TipoCliente})";
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Cliente no encontrado.\n\n¬øDesea registrarlo?",
+                        "Cliente No Encontrado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    clienteActual = null;
+                    ventaActual.Cliente = "Cliente General";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al buscar cliente: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -383,25 +476,34 @@ namespace CapaPresentacion
         {
             try
             {
+                //TODO: Validacion obligatoria de productos en el carrito
                 if (ventaActual.Items.Count == 0)
                 {
-                    MessageBox.Show("El carrito est· vacio", "Validacion",
+                    MessageBox.Show("El carrito esta vac√≠o", "Validacion",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                //TODO: Establecer mÈtodo de pago
-                ventaActual.MetodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
-
-                //TODO: Aplicar cliente y descuento si aplica
-                string tipoCliente = cmbTipoCliente.SelectedItem?.ToString() ?? "General";
-                if (tipoCliente == "A por mayor")
+                //TODO: Validacion obligatoria de cliente en la venta
+                if (clienteActual == null)
                 {
-                    clienteActual = new Cliente { TipoCliente = "A por mayor" };
+                    MessageBox.Show(
+                        "Debe agregar un cliente a la venta.\n\n" +
+                        "Ingrese el RNC del cliente y presione el boton BUSCAR.",
+                        "Cliente Requerido",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
                 }
+
+                //TODO: Establecer metodo de pago
+                ventaActual.MetodoPago = cmbMetodoPago.SelectedItem?.ToString() ?? "Efectivo";
 
                 //TODO: Solicitar monto pagado
                 string inputMonto = Microsoft.VisualBasic.Interaction.InputBox(
+                    $"Cliente: {clienteActual.Nombre} ({clienteActual.TipoCliente})\n" +
+                    $"Descuento aplicado: {clienteActual.PorcentajeDescuento:P0}\n\n" +
                     $"Total a pagar: {ventaActual.Total.AFormatoDominicano()}\n\n" +
                     $"Ingrese el monto recibido:",
                     "Procesar Pago",
@@ -410,6 +512,7 @@ namespace CapaPresentacion
 
                 if (string.IsNullOrEmpty(inputMonto)) return;
 
+                //TODO: Validar monto pagado
                 if (!decimal.TryParse(inputMonto, out decimal montoPagado))
                 {
                     MessageBox.Show("Monto invalido", "Error",
@@ -417,12 +520,12 @@ namespace CapaPresentacion
                     return;
                 }
 
-                //TODO: Si es tarjeta, validar
+                //TODO: Si es tarjeta, validar (ASYNC REQUERIDO)
                 if (ventaActual.MetodoPago == "Tarjeta")
                 {
                     string numeroTarjeta = Microsoft.VisualBasic.Interaction.InputBox(
-                        "Ingrese los ultimos 4 dÌgitos de la tarjeta:",
-                        "ValidaciÛn de Tarjeta"
+                        "Ingrese los ultimos 4 d√≠gitos de la tarjeta:",
+                        "Validaci√≥n de Tarjeta"
                     );
 
                     if (string.IsNullOrEmpty(numeroTarjeta)) return;
@@ -438,14 +541,14 @@ namespace CapaPresentacion
                         return;
                     }
 
-                    lblEstadoCargando.Text = "Tarjeta aprobada ?";
+                    lblEstadoCargando.Text = "Tarjeta aprobada ‚úì";
                 }
 
-                //TODO: Procesar venta (TRY-CATCH-FINALLY CON ROLLBACK)
+                //TODO: Procesar venta Try-Cacht-finally con Rollback
                 lblEstadoCargando.Text = "Procesando venta...";
                 await ventaService.ProcesarVentaAsync(ventaActual, montoPagado, clienteActual);
 
-                //TODO: El evento VentaCompletada se dispara autom·ticamente
+                //TODO: El evento VentaCompletada se dispara automaticamente
             }
             catch (MontoInsuficienteException ex)
             {
@@ -465,9 +568,9 @@ namespace CapaPresentacion
         private void BtnCancelarVenta_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show(
-                "øEst· seguro de cancelar la venta actual?\n\n" +
-                $"Se perder·n {ventaActual.Items.Count} productos del carrito.",
-                "Confirmar CancelaciÛn",
+                "¬øEst√° seguro de cancelar la venta actual?\n\n" +
+                $"Se perder√°n {ventaActual.Items.Count} productos del carrito.",
+                "Confirmar Cancelaci√≥n",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -476,7 +579,7 @@ namespace CapaPresentacion
             {
                 InicializarNuevaVenta();
                 ActualizarInterfazVenta();
-                MessageBox.Show("Venta cancelada", "InformaciÛn",
+                MessageBox.Show("Venta cancelada", "Informacion",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -488,7 +591,7 @@ namespace CapaPresentacion
             dataGridView4.DataSource = null;
             dataGridView4.DataSource = ventaActual.Items.Select(i => new
             {
-                CÛdigo = i.Producto.Codigo,
+                C√≥digo = i.Producto.Codigo,
                 Producto = i.Producto.Nombre,
                 Cantidad = i.Cantidad,
                 Precio = i.PrecioUnitario,
@@ -517,7 +620,7 @@ namespace CapaPresentacion
                 lblEstadoCargando.Text = "Cargando reporte...";
                 prbProgreso.Value = 0;
 
-                //TODO: Obtener estadÌsticas del dÌa
+                //TODO: Obtener estad√≠sticas del d√≠a
                 var estadisticas = await ventaService.ObtenerEstadisticasDelDiaAsync(fecha);
 
                 prbProgreso.Value = 50;
@@ -533,11 +636,17 @@ namespace CapaPresentacion
                 lblITBISFinal.Text = ((decimal)estadisticas["ITBISGeneral"]).AFormatoDominicano();
                 lblTotalGeneralFinal.Text = ((decimal)estadisticas["TotalGeneral"]).AFormatoDominicano();
 
+                //TODO: Cargar ventas en DataGridView
                 dgvReporteVentas.DataSource = ventas.Select(v => new
                 {
                     VentaID = v.VentaID,
-                    Fecha = v.Fecha,
+                    Fecha = v.Fecha.ToString("dd/MM/yyyy HH:mm"),
+                    Cliente = v.NombreCliente,        
+                    TipoCliente = v.TipoCliente,       
                     MetodoPago = v.MetodoPago,
+                    Subtotal = v.Subtotal,
+                    ITBIS = v.ITBIS,
+                    Descuento = v.Descuento,
                     Total = v.Total
                 }).ToList();
 
@@ -571,7 +680,7 @@ namespace CapaPresentacion
                     $"REPORTE RECALCULADO CON PLINQ\n\n" +
                     $"Total en Efectivo: {reporte["VentasEfectivo"].AFormatoDominicano()}\n" +
                     $"Total General: {reporte["TotalVentas"].AFormatoDominicano()}",
-                    "Rec·lculo Completado",
+                    "Rec√°lculo Completado",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -638,9 +747,19 @@ namespace CapaPresentacion
                 string rnc = txtIngreseRNC.Text.Trim();
                 string tipoCliente = cmbIngreseTipoCliente.SelectedItem?.ToString() ?? "General";
 
+                //TODO: Validar nombre obligatorio
                 if (string.IsNullOrEmpty(nombre))
                 {
-                    MessageBox.Show("Ingrese el nombre del cliente", "ValidaciÛn",
+                    MessageBox.Show("Ingrese el nombre del cliente", "Validacion",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                //TODO: Validar RNC (11 digitos o vacio)
+                if (!string.IsNullOrEmpty(rnc) && rnc.Length != 11)
+                {
+                    MessageBox.Show("El RNC debe tener solo 11 d√≠gitos",
+                        "RNC Inv√°lido",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -675,8 +794,8 @@ namespace CapaPresentacion
         //TODO: Boton quitar cliente (NO IMPLEMENTADO POR EL MOMENTO)
         private async void BtnQuitarCliente_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("FunciÛn de eliminar cliente no implementada por seguridad.\n" +
-                "En producciÛn requerirÌa validaciones adicionales.", "InformaciÛn",
+            MessageBox.Show("Funci√≥n de eliminar cliente no implementada por seguridad.\n" +
+                "En producci√≥n requerir√≠a validaciones adicionales.", "Informaci√≥n",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -751,6 +870,49 @@ namespace CapaPresentacion
                 txtRncCliente.ForeColor = Color.LightGray;
             }
         }
+        
+
+        private void txtRNCdeClienteParaCarrito_Enter(object sender, EventArgs e)
+        {
+            if (txtRNCdeClienteParaCarrito.Text == "Ingrese RNC del Cliente")
+            {
+                txtRNCdeClienteParaCarrito.Text = "";
+                txtRNCdeClienteParaCarrito.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void txtRNCdeClienteParaCarrito_Leave(object sender, EventArgs e)
+        {
+            if (txtRNCdeClienteParaCarrito.Text == "")
+            {
+                txtRNCdeClienteParaCarrito.Text = "Ingrese RNC del Cliente";
+                txtRNCdeClienteParaCarrito.ForeColor = Color.LightGray;
+            }
+        }
+        #endregion
+
+        #region KEY PRESS VALIDATIONS
+
+        //TODO: Permitir solo numeros en RNC
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //TODO: Permitir solo numeros y teclas de control
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //TODO: Solo letras y espacios en nombres de clientes
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //TODO: Permitir letras, espacios y backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
         #endregion
     }
 }
