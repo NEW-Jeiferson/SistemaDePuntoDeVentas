@@ -796,7 +796,7 @@ namespace CapaPresentacion
             }
         }
 
-        //TODO: Boton quitar cliente (NO IMPLEMENTADO POR EL MOMENTO)
+        //TODO: Boton quitar cliente, no lo tenemos implementado por seguridad por si borramos un cliente con historial de ventas, lo puse ahi por estetica en verdad
         private async void BtnQuitarCliente_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Función de eliminar cliente no implementada por seguridad.\n" +
