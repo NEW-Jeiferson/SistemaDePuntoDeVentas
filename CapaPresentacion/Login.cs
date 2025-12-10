@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CapaNegocios.Login;
+using CapaNegocios.Entidades;
 
 namespace CapaPresentacion
 {
@@ -92,53 +93,36 @@ namespace CapaPresentacion
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            //TODO: Lógica para el botón de Acceder
+            //TODO: Logica para el bot0n acceder
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtPassword.Text.Trim();
 
-            //TODO: Validar que los campos no estén vacíos
-            if (usuario == "" || contrasena == "" ||
-                usuario == "Usuario" || contrasena == "Password")
+            if (usuario == "" || contrasena == "" || usuario == "Usuario" || contrasena == "Password")
             {
-                MessageBox.Show("Debe completar usuario y contraseña.",
-                                "Campos incompletos",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show("Complete usuario y contraseña", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //TODO: Validar las credenciales usando la capa de negocio
+            //TODO: Validar el login
             LoginNegocio login = new LoginNegocio();
+            Usuario usuarioValidado = login.ValidarLogin(usuario, contrasena);
 
-            //TODO: Verificar si el login es válido
-            bool valido = login.ValidarLogin(usuario, contrasena);
-
-            //TODO: Mostrar mensaje según el resultado de la validación
-            if (valido)
+            //TODO: Verificar si el usuario es valido
+            if (usuarioValidado != null)
             {
-                MessageBox.Show("Bienvenido " + usuario,
-                                "Acceso concedido",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                MessageBox.Show($"Bienvenido {usuarioValidado.NombreUsuario}", "Acceso Concedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                
-                FormMenuPrincipal menu = new FormMenuPrincipal(1, usuario);
+                FormMenuPrincipal menu = new FormMenuPrincipal(usuarioValidado.UsuarioID, usuarioValidado.NombreUsuario);
                 menu.Show();
-
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.",
-                                "Acceso denegado",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.Clear();
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.DimGray;
                 txtPassword.UseSystemPasswordChar = false;
-                txtPassword.Focus();
             }
         }
     }

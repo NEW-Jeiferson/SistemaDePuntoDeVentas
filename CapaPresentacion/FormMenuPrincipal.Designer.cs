@@ -31,6 +31,7 @@
         {
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            btnSalirDelSistema = new MaterialSkin.Controls.MaterialButton();
             tabPageInventario = new TabPage();
             btnBuscarProducto = new MaterialSkin.Controls.MaterialButton();
             txtBuscarProducto = new MaterialSkin.Controls.MaterialMaskedTextBox();
@@ -41,8 +42,6 @@
             tabPageCarrito = new TabPage();
             btnAgregarClienteAlCarrito = new MaterialSkin.Controls.MaterialButton();
             txtRNCdeClienteParaCarrito = new MaterialSkin.Controls.MaterialMaskedTextBox();
-            cmbTipoCliente = new MaterialSkin.Controls.MaterialComboBox();
-            lblTipoCliente = new MaterialSkin.Controls.MaterialLabel();
             cmbMetodoPago = new MaterialSkin.Controls.MaterialComboBox();
             lblMetodoPago = new MaterialSkin.Controls.MaterialLabel();
             dataGridView3 = new DataGridView();
@@ -102,6 +101,7 @@
             btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
             txtRncCliente = new MaterialSkin.Controls.MaterialMaskedTextBox();
             materialTabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             tabPageInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -138,6 +138,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnSalirDelSistema);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -145,6 +146,25 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Home";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSalirDelSistema
+            // 
+            btnSalirDelSistema.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSalirDelSistema.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSalirDelSistema.Depth = 0;
+            btnSalirDelSistema.HighEmphasis = true;
+            btnSalirDelSistema.Icon = null;
+            btnSalirDelSistema.Location = new Point(7, 460);
+            btnSalirDelSistema.Margin = new Padding(4, 6, 4, 6);
+            btnSalirDelSistema.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSalirDelSistema.Name = "btnSalirDelSistema";
+            btnSalirDelSistema.NoAccentTextColor = Color.Empty;
+            btnSalirDelSistema.Size = new Size(158, 36);
+            btnSalirDelSistema.TabIndex = 0;
+            btnSalirDelSistema.Text = "Salir Del Sistema";
+            btnSalirDelSistema.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSalirDelSistema.UseAccentColor = false;
+            btnSalirDelSistema.UseVisualStyleBackColor = true;
             // 
             // tabPageInventario
             // 
@@ -270,8 +290,6 @@
             // 
             tabPageCarrito.Controls.Add(btnAgregarClienteAlCarrito);
             tabPageCarrito.Controls.Add(txtRNCdeClienteParaCarrito);
-            tabPageCarrito.Controls.Add(cmbTipoCliente);
-            tabPageCarrito.Controls.Add(lblTipoCliente);
             tabPageCarrito.Controls.Add(cmbMetodoPago);
             tabPageCarrito.Controls.Add(lblMetodoPago);
             tabPageCarrito.Controls.Add(dataGridView3);
@@ -357,40 +375,6 @@
             txtRNCdeClienteParaCarrito.ValidatingType = null;
             txtRNCdeClienteParaCarrito.Enter += txtRNCdeClienteParaCarrito_Enter;
             txtRNCdeClienteParaCarrito.Leave += txtRNCdeClienteParaCarrito_Leave;
-            // 
-            // cmbTipoCliente
-            // 
-            cmbTipoCliente.AutoResize = false;
-            cmbTipoCliente.BackColor = Color.FromArgb(255, 255, 255);
-            cmbTipoCliente.Depth = 0;
-            cmbTipoCliente.DrawMode = DrawMode.OwnerDrawVariable;
-            cmbTipoCliente.DropDownHeight = 174;
-            cmbTipoCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoCliente.DropDownWidth = 121;
-            cmbTipoCliente.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            cmbTipoCliente.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            cmbTipoCliente.FormattingEnabled = true;
-            cmbTipoCliente.IntegralHeight = false;
-            cmbTipoCliente.ItemHeight = 43;
-            cmbTipoCliente.Location = new Point(154, 431);
-            cmbTipoCliente.MaxDropDownItems = 4;
-            cmbTipoCliente.MouseState = MaterialSkin.MouseState.OUT;
-            cmbTipoCliente.Name = "cmbTipoCliente";
-            cmbTipoCliente.Size = new Size(161, 49);
-            cmbTipoCliente.StartIndex = 0;
-            cmbTipoCliente.TabIndex = 20;
-            // 
-            // lblTipoCliente
-            // 
-            lblTipoCliente.AutoSize = true;
-            lblTipoCliente.Depth = 0;
-            lblTipoCliente.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblTipoCliente.Location = new Point(31, 448);
-            lblTipoCliente.MouseState = MaterialSkin.MouseState.HOVER;
-            lblTipoCliente.Name = "lblTipoCliente";
-            lblTipoCliente.Size = new Size(106, 19);
-            lblTipoCliente.TabIndex = 19;
-            lblTipoCliente.Text = "Tipo de Cliente";
             // 
             // cmbMetodoPago
             // 
@@ -1320,6 +1304,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Colmado Alegria";
             materialTabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             tabPageInventario.ResumeLayout(false);
             tabPageInventario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -1403,8 +1389,6 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoCargando;
         private MaterialSkin.Controls.MaterialLabel lblReportesdelDia;
         private MaterialSkin.Controls.MaterialLabel lblInventario;
-        private MaterialSkin.Controls.MaterialComboBox cmbTipoCliente;
-        private MaterialSkin.Controls.MaterialLabel lblTipoCliente;
         private TabPage tabPageClientes;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtRncCliente;
         private MaterialSkin.Controls.MaterialButton btnBuscarCliente;
@@ -1422,5 +1406,6 @@
         private MaterialSkin.Controls.MaterialButton btnIngreseCliente;
         private MaterialSkin.Controls.MaterialButton btnAgregarClienteAlCarrito;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtRNCdeClienteParaCarrito;
+        private MaterialSkin.Controls.MaterialButton btnSalirDelSistema;
     }
 }

@@ -9,33 +9,45 @@ using Microsoft.Data.SqlClient;
 
 namespace CapaNegocios.Repositorios
 {
+    //TODO: Esta clase es para mapear los datos del reporte de ventas por fecha ya que estuve teniendo problemas si lo hacia directamente con la entidad Ventas
+    public class VentaReporteDto
+    {
+        public int VentaID { get; set; }
+        public DateTime Fecha { get; set; }
+        public string MetodoPago { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal ITBIS { get; set; }
+        public decimal Descuento { get; set; }
+        public decimal Total { get; set; }
+        public string NombreCliente { get; set; }
+        public string TipoCliente { get; set; }
+    }
+
     public class VentaRepositorio
     {
         //TODO: Guardar venta completa con sus detalles
-        public async Task<int> GuardarVentaAsync(Ventas venta)
+        public async Task<int> GuardarVentaAsync(Ventas venta, int? clienteID = null)
         {
             using (var conexion = SistemaDeConexion.ObtenerConexion())
             {
                 await conexion.OpenAsync();
 
-                //TODO: Iniciar transacción para garantizar integridad
                 using (var transaccion = conexion.BeginTransaction())
                 {
                     try
                     {
                         int ventaId = 0;
 
-                        //TODO: Insertar encabezado de venta
+                        //TODO: Insertar encabezado de venta CON ClienteID
                         string queryVenta = @"INSERT INTO Ventas 
-                            (UsuarioID, ClienteID, Subtotal, ITBIS, Descuento, Total, MetodoPago, Estado, FechaVenta)
-                            VALUES (@UsuarioID, @ClienteID, @Subtotal, @ITBIS, @Descuento, @Total, @MetodoPago, @Estado, @FechaVenta);
-                            SELECT CAST(SCOPE_IDENTITY() AS INT)";
+                        (UsuarioID, ClienteID, Subtotal, ITBIS, Descuento, Total, MetodoPago, Estado, FechaVenta)
+                        VALUES (@UsuarioID, @ClienteID, @Subtotal, @ITBIS, @Descuento, @Total, @MetodoPago, @Estado, @FechaVenta);
+                        SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
-                        //TODO: Obtener el ID generado de la venta
                         using (var comando = new SqlCommand(queryVenta, conexion, transaccion))
                         {
                             comando.Parameters.AddWithValue("@UsuarioID", venta.UsuarioID);
-                            comando.Parameters.AddWithValue("@ClienteID", (object)venta.Cliente ?? DBNull.Value);
+                            comando.Parameters.AddWithValue("@ClienteID", clienteID.HasValue ? (object)clienteID.Value : DBNull.Value);
                             comando.Parameters.AddWithValue("@Subtotal", venta.Subtotal);
                             comando.Parameters.AddWithValue("@ITBIS", venta.ITBIS);
                             comando.Parameters.AddWithValue("@Descuento", venta.Descuento);
@@ -47,15 +59,13 @@ namespace CapaNegocios.Repositorios
                             ventaId = (int)await comando.ExecuteScalarAsync();
                         }
 
-                        //TODO: Insertar detalles de venta
+                        //TODO: Insertar detalles
                         string queryDetalle = @"INSERT INTO DetalleVenta 
-                            (VentaID, ProductoID, PrecioVentaUnitario, Cantidad, Subtotal, ITBIS, Total)
-                            VALUES (@VentaID, @ProductoID, @PrecioUnitario, @Cantidad, @Subtotal, @ITBIS, @Total)";
+                        (VentaID, ProductoID, PrecioVentaUnitario, Cantidad, Subtotal, ITBIS, Total)
+                        VALUES (@VentaID, @ProductoID, @PrecioUnitario, @Cantidad, @Subtotal, @ITBIS, @Total)";
 
-                        //TODO: Foreach para cada item en la venta
                         foreach (var item in venta.Items)
                         {
-                            //TODO: Insertar cada detalle de venta
                             using (var comando = new SqlCommand(queryDetalle, conexion, transaccion))
                             {
                                 comando.Parameters.AddWithValue("@VentaID", ventaId);
@@ -70,13 +80,11 @@ namespace CapaNegocios.Repositorios
                             }
                         }
 
-                        //TODO: Confirmar transacción
                         transaccion.Commit();
                         return ventaId;
                     }
                     catch
                     {
-                        //TODO: Revertir cambios en caso de error
                         transaccion.Rollback();
                         throw;
                     }
@@ -85,19 +93,30 @@ namespace CapaNegocios.Repositorios
         }
 
         //TODO: Obtener ventas por fecha, esto para implementarlo en form reporte de ventas
-        public async Task<List<Ventas>> ObtenerVentasPorFechaAsync(DateTime fecha)
+        public async Task<List<VentaReporteDto>> ObtenerVentasPorFechaAsync(DateTime fecha)
         {
-            var ventas = new List<Ventas>();
+            var ventas = new List<VentaReporteDto>();
 
             using (var conexion = SistemaDeConexion.ObtenerConexion())
             {
                 await conexion.OpenAsync();
 
-                string query = @"SELECT VentaID, UsuarioID, Subtotal, ITBIS, 
-                                Descuento, Total, MetodoPago, FechaVenta
-                                FROM Ventas
-                                WHERE CAST(FechaVenta AS DATE) = CAST(@Fecha AS DATE)
-                                ORDER BY FechaVenta DESC";
+                //TODO: Consulta para obtener ventas con LEFT JOIN a Clientes
+                string query = @"SELECT 
+                  v.VentaID,
+                  v.FechaVenta,
+                  v.MetodoPago,
+                  v.Subtotal,
+                  v.ITBIS,
+                  v.Descuento,
+                  v.Total,
+                  ISNULL(c.Nombre, 'Cliente General') AS NombreCliente,
+                  ISNULL(c.TipoCliente, 'General') AS TipoCliente
+                  FROM Ventas v
+                  LEFT JOIN Clientes c ON v.ClienteID = c.ClienteID
+                  WHERE CAST(v.FechaVenta AS DATE) = CAST(@Fecha AS DATE)
+                  AND v.Estado = 'Completada'
+                  ORDER BY v.FechaVenta DESC";
 
                 using (var comando = new SqlCommand(query, conexion))
                 {
@@ -107,14 +126,17 @@ namespace CapaNegocios.Repositorios
                     {
                         while (await reader.ReadAsync())
                         {
-                            ventas.Add(new Ventas
+                            ventas.Add(new VentaReporteDto
                             {
                                 VentaID = reader.GetInt32(0),
-                                UsuarioID = reader.GetInt32(1),
-                                Descuento = reader.GetDecimal(4),
-                                MetodoPago = reader.GetString(6),
-                                Fecha = reader.GetDateTime(7),
-                                Items = new List<ItemVenta>()
+                                Fecha = reader.GetDateTime(1),
+                                MetodoPago = reader.GetString(2),
+                                Subtotal = reader.GetDecimal(3),
+                                ITBIS = reader.GetDecimal(4),
+                                Descuento = reader.GetDecimal(5),
+                                Total = reader.GetDecimal(6),
+                                NombreCliente = reader.GetString(7),
+                                TipoCliente = reader.GetString(8)
                             });
                         }
                     }
@@ -123,6 +145,7 @@ namespace CapaNegocios.Repositorios
 
             return ventas;
         }
+
 
         //TODO: Obtener estadísticas del día de las ventas
         public async Task<Dictionary<string, object>> ObtenerEstadisticasDelDiaAsync(DateTime fecha)

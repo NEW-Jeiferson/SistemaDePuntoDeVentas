@@ -4,35 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
+using CapaNegocios.Entidades;
 using Microsoft.Data.SqlClient;
 
 namespace CapaNegocios.Login
 {
-   public class LoginNegocio
-   {
-        public bool ValidarLogin(string usuario, string contrasena)
+    //TODO: Logica de negocio para el login
+    public class LoginNegocio
+    {
+        //TODO: Metodo para validar el login
+        public Usuario ValidarLogin(string nombreUsuario, string contrasena)
         {
             using (SqlConnection conn = SistemaDeConexion.ObtenerConexion())
             {
                 conn.Open();
 
-                string query = @"SELECT COUNT(*)
-                                 FROM Usuarios
-                                 WHERE NombreUsuario = @admin
-                                   AND Contrasena = @123
-                                   AND Activo = 1";
+                string query = @"SELECT UsuarioID, NombreUsuario, Rol
+                                FROM Usuarios
+                                WHERE NombreUsuario = @usuario
+                                  AND Contrasena = @contrasena
+                                  AND Activo = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@admin", usuario);
-                    cmd.Parameters.AddWithValue("@123", contrasena);
+                    cmd.Parameters.AddWithValue("@usuario", nombreUsuario);
+                    cmd.Parameters.AddWithValue("@contrasena", contrasena);
 
-                    int count = (int)cmd.ExecuteScalar();
-
-                    return count == 1;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Usuario
+                            {
+                                UsuarioID = reader.GetInt32(0),
+                                NombreUsuario = reader.GetString(1),
+                                Rol = reader.GetString(2)
+                            };
+                        }
+                    }
                 }
             }
-        }
 
-   }
+            return null;
+        }
+    }
 }
