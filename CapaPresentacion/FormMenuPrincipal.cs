@@ -88,11 +88,6 @@ namespace CapaPresentacion
                 ventaService = new VentaService(inventarioService);
                 clienteRepo = new ClienteRepositorio();
 
-                //TODO: Suscribirse a eventos de negocio
-                inventarioService.InventarioBajo += InventarioService_InventarioBajo;
-                ventaService.ProductoAgregado += VentaService_ProductoAgregado;
-                ventaService.VentaCompletada += VentaService_VentaCompletada;
-
                 //TODO: Cargar inventario usando Task.WhenAll, eso pa cumplir todos los requisitos
                 lblEstadoCargando.Text = "Cargando inventario...";
                 await inventarioService.CargarInventarioAsync();
@@ -100,11 +95,18 @@ namespace CapaPresentacion
 
                 //TODO: Cargar inventario en DataGridView
                 await CargarInventarioEnGrid();
+                
+                //TODO: Cargar CLientes en DataGridView
+                await CargarClientesEnGrid();
+
+                //TODO: Suscribirse a eventos de negocio para que notifiquen la interfaz
+                inventarioService.InventarioBajo += InventarioService_InventarioBajo;
+                ventaService.ProductoAgregado += VentaService_ProductoAgregado;
+                ventaService.VentaCompletada += VentaService_VentaCompletada;
 
                 MessageBox.Show("Sistema inicializado correctamente", "Exito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
             //TODO: Manejar errores de inicializacion para que no explote
             catch (Exception ex)
             {
@@ -154,6 +156,9 @@ namespace CapaPresentacion
             nmrCantidadProducto.Minimum = 1;
             nmrCantidadProducto.Maximum = 1000;
             nmrCantidadProducto.Value = 1;
+
+            //TODO: Boton salir del sistema
+            btnSalirDelSistema.Click += BtnSalirDelSistema_Click;
         }
 
         //TODO: Inicializar nueva venta
@@ -813,7 +818,6 @@ namespace CapaPresentacion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         #endregion
 
         #region EVENTOS DE TEXTBOX
@@ -910,6 +914,26 @@ namespace CapaPresentacion
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
+            }
+        }
+
+        #endregion
+
+        #region SISTEMA
+
+        //TODO: Boton salir del sistema
+        private void BtnSalirDelSistema_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+                "¿Está seguro que desea salir del sistema?",
+                "Confirmar Salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
             }
         }
 
