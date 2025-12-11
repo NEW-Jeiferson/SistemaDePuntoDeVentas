@@ -31,6 +31,7 @@
         {
             materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            btnSalirDelSistema = new MaterialSkin.Controls.MaterialButton();
             tabPageInventario = new TabPage();
             btnBuscarProducto = new MaterialSkin.Controls.MaterialButton();
             txtBuscarProducto = new MaterialSkin.Controls.MaterialMaskedTextBox();
@@ -100,6 +101,7 @@
             btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
             txtRncCliente = new MaterialSkin.Controls.MaterialMaskedTextBox();
             materialTabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
             tabPageInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -136,6 +138,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(btnSalirDelSistema);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -143,6 +146,25 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Home";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnSalirDelSistema
+            // 
+            btnSalirDelSistema.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSalirDelSistema.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSalirDelSistema.Depth = 0;
+            btnSalirDelSistema.HighEmphasis = true;
+            btnSalirDelSistema.Icon = null;
+            btnSalirDelSistema.Location = new Point(7, 460);
+            btnSalirDelSistema.Margin = new Padding(4, 6, 4, 6);
+            btnSalirDelSistema.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSalirDelSistema.Name = "btnSalirDelSistema";
+            btnSalirDelSistema.NoAccentTextColor = Color.Empty;
+            btnSalirDelSistema.Size = new Size(158, 36);
+            btnSalirDelSistema.TabIndex = 0;
+            btnSalirDelSistema.Text = "Salir Del Sistema";
+            btnSalirDelSistema.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSalirDelSistema.UseAccentColor = false;
+            btnSalirDelSistema.UseVisualStyleBackColor = true;
             // 
             // tabPageInventario
             // 
@@ -1282,6 +1304,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Colmado Alegria";
             materialTabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             tabPageInventario.ResumeLayout(false);
             tabPageInventario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -1382,5 +1406,6 @@
         private MaterialSkin.Controls.MaterialButton btnIngreseCliente;
         private MaterialSkin.Controls.MaterialButton btnAgregarClienteAlCarrito;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtRNCdeClienteParaCarrito;
+        private MaterialSkin.Controls.MaterialButton btnSalirDelSistema;
     }
 }
