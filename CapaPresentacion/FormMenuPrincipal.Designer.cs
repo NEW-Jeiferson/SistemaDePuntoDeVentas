@@ -100,6 +100,7 @@
             dataGridView5 = new DataGridView();
             btnBuscarCliente = new MaterialSkin.Controls.MaterialButton();
             txtRncCliente = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            pictureBox1 = new PictureBox();
             materialTabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPageInventario.SuspendLayout();
@@ -117,6 +118,7 @@
             tabPageClientes.SuspendLayout();
             materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -139,6 +141,7 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(btnSalirDelSistema);
+            tabPage1.Controls.Add(pictureBox1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -154,7 +157,7 @@
             btnSalirDelSistema.Depth = 0;
             btnSalirDelSistema.HighEmphasis = true;
             btnSalirDelSistema.Icon = null;
-            btnSalirDelSistema.Location = new Point(7, 460);
+            btnSalirDelSistema.Location = new Point(7, 463);
             btnSalirDelSistema.Margin = new Padding(4, 6, 4, 6);
             btnSalirDelSistema.MouseState = MaterialSkin.MouseState.HOVER;
             btnSalirDelSistema.Name = "btnSalirDelSistema";
@@ -1294,6 +1297,16 @@
             txtRncCliente.Enter += txtRncCliente_Enter;
             txtRncCliente.Leave += txtRncCliente_Leave;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Diseño_sin_título__2_;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(999, 532);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -1329,6 +1342,7 @@
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1407,5 +1421,6 @@
         private MaterialSkin.Controls.MaterialButton btnAgregarClienteAlCarrito;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtRNCdeClienteParaCarrito;
         private MaterialSkin.Controls.MaterialButton btnSalirDelSistema;
+        private PictureBox pictureBox1;
     }
 }
