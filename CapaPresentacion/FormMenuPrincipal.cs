@@ -32,6 +32,9 @@ namespace CapaPresentacion
             this.usuarioActualID = usuarioID;
             this.nombreUsuario = nombre;
 
+            //TODO: Configurar DataGridViews
+            ConfigurarDataGridViews();
+
             //TODO: Inicializar servicios y repositorios
             InicializarNuevaVenta();
             ConfigurarMaterialSkin();
@@ -937,6 +940,39 @@ namespace CapaPresentacion
             }
         }
 
+        #endregion
+
+        #region CONFIGURACION DATAGRIVIEW PARA QUE SEA SOLO LECTUA
+        private void ConfigurarDataGridViews()
+        {
+            //TODO: Configurar todos los DataGridView para solo lectura y otras propiedades comunes
+            var grids = new[] { dataGridView1, dataGridView2, dataGridView3,
+                        dataGridView4, dataGridView5, dgvReporteVentas };
+
+            foreach (var grid in grids)
+            {
+                //TODO: Configurar DataGridView para solo lectura
+                grid.ReadOnly = true;
+
+                //TODO: Seleccionar fila completa
+                grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                //TODO: Deshabilitar multiseleccion
+                grid.MultiSelect = false;
+
+                //TODO: No permitir agregar o eliminar filas
+                grid.AllowUserToAddRows = false;
+
+                //TODO: No permitir eliminar filas
+                grid.AllowUserToDeleteRows = false;
+
+                //TODO: Ajustar columnas al tamaño del grid
+                grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                //TODO: Alternar color de filas
+                grid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            }
+        }
         #endregion
     }
 }

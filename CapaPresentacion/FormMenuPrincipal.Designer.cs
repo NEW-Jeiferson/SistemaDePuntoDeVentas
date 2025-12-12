@@ -159,7 +159,7 @@
             btnSalirDelSistema.MouseState = MaterialSkin.MouseState.HOVER;
             btnSalirDelSistema.Name = "btnSalirDelSistema";
             btnSalirDelSistema.NoAccentTextColor = Color.Empty;
-            btnSalirDelSistema.Size = new Size(158, 36);
+            btnSalirDelSistema.Size = new Size(156, 36);
             btnSalirDelSistema.TabIndex = 0;
             btnSalirDelSistema.Text = "Salir Del Sistema";
             btnSalirDelSistema.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -250,7 +250,7 @@
             lblInventario.AutoSize = true;
             lblInventario.Depth = 0;
             lblInventario.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblInventario.Location = new Point(449, 53);
+            lblInventario.Location = new Point(452, 53);
             lblInventario.MouseState = MaterialSkin.MouseState.HOVER;
             lblInventario.Name = "lblInventario";
             lblInventario.Size = new Size(71, 19);
@@ -273,17 +273,17 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(215, 412);
+            dataGridView2.Location = new Point(186, 412);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(536, 87);
+            dataGridView2.Size = new Size(600, 87);
             dataGridView2.TabIndex = 15;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(215, 80);
+            dataGridView1.Location = new Point(186, 75);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(536, 252);
+            dataGridView1.Size = new Size(600, 252);
             dataGridView1.TabIndex = 1;
             // 
             // tabPageCarrito
@@ -1008,7 +1008,7 @@
             btnQuitarCliente.Depth = 0;
             btnQuitarCliente.HighEmphasis = true;
             btnQuitarCliente.Icon = null;
-            btnQuitarCliente.Location = new Point(725, 412);
+            btnQuitarCliente.Location = new Point(775, 412);
             btnQuitarCliente.Margin = new Padding(4, 6, 4, 6);
             btnQuitarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             btnQuitarCliente.Name = "btnQuitarCliente";
@@ -1216,7 +1216,7 @@
             lblClientesRegistrados.AutoSize = true;
             lblClientesRegistrados.Depth = 0;
             lblClientesRegistrados.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            lblClientesRegistrados.Location = new Point(541, 76);
+            lblClientesRegistrados.Location = new Point(572, 79);
             lblClientesRegistrados.MouseState = MaterialSkin.MouseState.HOVER;
             lblClientesRegistrados.Name = "lblClientesRegistrados";
             lblClientesRegistrados.Size = new Size(137, 19);
@@ -1228,7 +1228,7 @@
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView5.Location = new Point(350, 103);
             dataGridView5.Name = "dataGridView5";
-            dataGridView5.Size = new Size(510, 300);
+            dataGridView5.Size = new Size(560, 300);
             dataGridView5.TabIndex = 2;
             // 
             // btnBuscarCliente
