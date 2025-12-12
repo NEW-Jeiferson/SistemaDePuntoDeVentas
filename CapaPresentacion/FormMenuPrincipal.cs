@@ -102,6 +102,9 @@ namespace CapaPresentacion
                 //TODO: Cargar CLientes en DataGridView
                 await CargarClientesEnGrid();
 
+                //TODO: Cargar productos en el carrito
+                await CargarProductosEnCarrito();
+
                 //TODO: Suscribirse a eventos de negocio para que notifiquen la interfaz
                 inventarioService.InventarioBajo += InventarioService_InventarioBajo;
                 ventaService.ProductoAgregado += VentaService_ProductoAgregado;
@@ -436,6 +439,9 @@ namespace CapaPresentacion
                 txtBuscarPorCodigo.Text = "Ingresa el Codigo";
                 txtBuscarPorCodigo.ForeColor = Color.LightGray;
                 nmrCantidadProducto.Value = 1;
+
+                //TODO: Vuelve a mostrar todos los productos disponibles
+                await CargarProductosEnCarrito();
             }
             catch (CodigoInvalidoException ex)
             {
@@ -612,6 +618,20 @@ namespace CapaPresentacion
             lblMontoSubtotal.Text = ventaActual.Subtotal.AFormatoDominicano();
             lblMontoITBIS.Text = ventaActual.ITBIS.AFormatoDominicano();
             lblMontoTotal.Text = ventaActual.Total.AFormatoDominicano();
+        }
+
+        //TODO: Cargar productos en el carrito (DataGridView)
+        private async Task CargarProductosEnCarrito()
+        {
+            try
+            {
+                var productos = await inventarioService.BuscarPorNombreAsync("");
+                dataGridView3.DataSource = productos;
+            }
+            catch (Exception ex)
+            {
+                lblEstadoCargando.Text = $"Error: {ex.Message}";
+            }
         }
 
         #endregion
